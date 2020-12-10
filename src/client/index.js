@@ -3,6 +3,6 @@ import { performAction } from './js/performAction';
 import './styles/style.scss';
 
 // Event listener to add function to existing HTML DOM element
-document.getElementById('generate').addEventListener('click', performAction(event));
+document.getElementById('generate').addEventListener('click', performAction);
 
 export { performAction };
