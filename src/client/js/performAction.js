@@ -6,27 +6,9 @@ let baseURL = 'http://api.geonames.org/searchJSON?name_equals=';
 // Personal API Key for OpenWeatherMap API
 const apiKey = '&lang=en&username=mohamedomar';
 
-// Create a new date instance dynamically with JS
-let month = {
-  0: 'January',
-  1: 'February',
-  2: 'March',
-  3: 'April',
-  4: 'May',
-  5: 'June',
-  6: 'July',
-  7: 'August',
-  8: 'September',
-  9: 'October',
-  10: 'November',
-  11: 'December',
-};
-
-let d = new Date();
-let newDate = month[d.getMonth()] + '.' + d.getDate() + '.' + d.getFullYear();
-
 /* Function called by event listener */
 function performAction(e) {
+  event.preventDefault(e);
   const departingDate = document.getElementById('departingDate').value;
   const cityName = document.getElementById('city').value;
 
@@ -38,7 +20,7 @@ function performAction(e) {
       lng: data.geonames[0].lng,
       departingDate: departingDate,
     });
-    updateUI();
+    updateUI(), Client.countDown();
   });
 }
 
@@ -81,12 +63,9 @@ const updateUI = async () => {
   const request = await fetch('http://localhost:8081/all');
   try {
     const allData = await request.json();
-    document.getElementById(
-      'countdown'
-    ).innerHTML = `departingDate: ${allData.departingDate}`;
-    document.getElementById(
-      'weatherData'
-    ).innerHTML = `countryName: ${allData.countryName}
+    document.getElementById('weatherData').innerHTML = `
+    departingDate: ${allData.departingDate}
+    countryName: ${allData.countryName}
     lat: ${allData.lat}
     lng: ${allData.lng}
     `;
