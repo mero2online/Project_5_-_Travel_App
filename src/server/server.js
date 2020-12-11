@@ -59,9 +59,10 @@ app.post('/weatherData', weatherData);
 function weatherData(req, res) {
     console.log('post req.body', req.body)
     let wData = req.body;
-    projectData["temperature"] = wData.temperature
-    projectData["date"] = wData.date
-    projectData["userResponse"] = wData.userResponse
+    projectData["countryName"] = wData.countryName
+    projectData["lat"] = wData.lat
+    projectData["lng"] = wData.lng
+    projectData["departingDate"] = wData.departingDate
 
     res.send(projectData)
     console.log('post projectData', projectData)

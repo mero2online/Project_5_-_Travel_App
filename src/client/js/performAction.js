@@ -1,10 +1,10 @@
 /* Global Variables */
 
 // Base URL for OpenWeatherMap API to optain current weather data by ZIP code
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
+let baseURL = 'http://api.geonames.org/searchJSON?name_equals=';
 
 // Personal API Key for OpenWeatherMap API
-const apiKey = '&appid=7e3d290cd442823876bb07faec6a3a8e';
+const apiKey = '&lang=en&username=mohamedomar';
 
 // Create a new date instance dynamically with JS
 let month = {
@@ -27,23 +27,24 @@ let newDate = month[d.getMonth()] + '.' + d.getDate() + '.' + d.getFullYear();
 
 /* Function called by event listener */
 function performAction(e) {
-  const userResponse = document.getElementById('feelings').value;
-  const zipCode = document.getElementById('zip').value;
+  const departingDate = document.getElementById('departingDate').value;
+  const cityName = document.getElementById('city').value;
 
-  getWebData(baseURL, zipCode, apiKey).then(function (data) {
+  getWebData(baseURL, cityName, apiKey).then(function (data) {
     console.log('getWebData', data);
     postData('http://localhost:8081/weatherData', {
-      temperature: data.main.temp,
-      date: newDate,
-      userResponse: userResponse,
+      countryName: data.geonames[0].countryName,
+      lat: data.geonames[0].lat,
+      lng: data.geonames[0].lng,
+      departingDate: departingDate,
     });
     updateUI();
   });
 }
 
 /* Function to GET Web API Data*/
-const getWebData = async (baseURL, zipCode, apiKey) => {
-  const res = await fetch(baseURL + zipCode + apiKey);
+const getWebData = async (baseURL, cityName, apiKey) => {
+  const res = await fetch(baseURL + cityName + apiKey);
   try {
     const data = await res.json();
     console.log('getWebData', data);
@@ -80,13 +81,15 @@ const updateUI = async () => {
   const request = await fetch('http://localhost:8081/all');
   try {
     const allData = await request.json();
-    document.getElementById('date').innerHTML = `Date: ${allData.date}`;
     document.getElementById(
-      'temp'
-    ).innerHTML = `Temperature: ${allData.temperature} kelvin`;
+      'countdown'
+    ).innerHTML = `departingDate: ${allData.departingDate}`;
     document.getElementById(
-      'content'
-    ).innerHTML = `Your feeling: ${allData.userResponse}`;
+      'weatherData'
+    ).innerHTML = `countryName: ${allData.countryName}
+    lat: ${allData.lat}
+    lng: ${allData.lng}
+    `;
   } catch (error) {
     console.log('error', error);
   }
