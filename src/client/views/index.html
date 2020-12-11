@@ -12,23 +12,22 @@
 
   <div id="app">
     <div class="holder headline">
-      Weather Journal App
+      Travel App
     </div>
-    <div class="holder zip">
-      <label for="zip">Enter Zipcode here</label>
-      <input type="text" id="zip" placeholder="enter zip code here">
+    <div class="holder city">
+      <label for="city">My Trip to</label>
+      <input type="text" id="city" placeholder="enter city name here">
     </div>
-    <div class="holder feel">
-      <label for="feelings">How are you feeling today?</label>
-      <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="4" cols="40"></textarea>
+    <div class="holder departingDate">
+      <label for="departingDate">Departing date</label>
+      <input type="date" id="departingDate" placeholder="MM/DD/YYYY">
       <button id="generate" type="submit"> Generate </button>
     </div>
-    <div class="holder entry">
-      <div class="title">Most Recent Entry</div>
+    <div class="holder info">
+      <div class="title">Trip information</div>
       <div id="entryHolder">
-        <div id="date"></div>
-        <div id="temp"></div>
-        <div id="content"></div>
+        <div id="countdown"></div>
+        <div id="weatherData"></div>
       </div>
     </div>
   </div>
