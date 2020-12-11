@@ -54,9 +54,9 @@ function getData(req, res) {
 }
 
 // POST Route
-app.post('/weatherData', weatherData);
+app.post('/geonamesData', geonamesData);
 
-function weatherData(req, res) {
+function geonamesData(req, res) {
     console.log('post req.body', req.body)
     let wData = req.body;
     projectData["countryName"] = wData.countryName

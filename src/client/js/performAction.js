@@ -32,7 +32,7 @@ function performAction(e) {
 
   getWebData(baseURL, cityName, apiKey).then(function (data) {
     console.log('getWebData', data);
-    postData('http://localhost:8081/weatherData', {
+    postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,
