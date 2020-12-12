@@ -1,10 +1,5 @@
-/* Global Variables */
-
-// Base URL for OpenWeatherMap API to optain current weather data by ZIP code
-let baseURL = 'http://api.geonames.org/searchJSON?name_equals=';
-
-// Personal API Key for OpenWeatherMap API
-const apiKey = '&lang=en&username=mohamedomar';
+// Personal API Key for GeoNames API
+const geonamesAPIkey = 'mohamedomar';
 
 /* Function called by event listener */
 function performAction(e) {
@@ -12,7 +7,10 @@ function performAction(e) {
   const departingDate = document.getElementById('departingDate').value;
   const cityName = document.getElementById('city').value;
 
-  getWebData(baseURL, cityName, apiKey).then(function (data) {
+  // Base URL for GeoNames API
+  let geonamesBaseURL = `http://api.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
+
+  getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
     console.log('getWebData', data);
     postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,
@@ -26,8 +24,8 @@ function performAction(e) {
 }
 
 /* Function to GET Web API Data*/
-const getWebData = async (baseURL, cityName, apiKey) => {
-  const res = await fetch(baseURL + cityName + apiKey);
+const getWebData = async (geonamesBaseURL, geonamesAPIkey) => {
+  const res = await fetch(geonamesBaseURL + geonamesAPIkey);
   try {
     const data = await res.json();
     console.log('getWebData', data);
@@ -69,7 +67,6 @@ const updateUI = async () => {
     countryName: ${allData.countryName}
     lat: ${allData.lat}
     lng: ${allData.lng}
-    days: ${allData.days}
     `;
   } catch (error) {
     console.log('error', error);

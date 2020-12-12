@@ -5,10 +5,10 @@ function countDown() {
       let departingDate = data.departingDate;
 
       let d = new Date();
-      let dateForDountDown = new Date(departingDate);
-      console.log(dateForDountDown);
+      let dateForCountDown = new Date(departingDate);
+      console.log(dateForCountDown);
       //   let countDownCounter = setInterval(function () {
-      let duration = dateForDountDown - d;
+      let duration = dateForCountDown - d;
 
       let days = Math.floor(duration / (1000 * 60 * 60 * 24));
 
