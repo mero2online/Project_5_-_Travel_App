@@ -4,23 +4,27 @@ const geonamesAPIkey = 'mohamedomar';
 /* Function called by event listener */
 function performAction(e) {
   event.preventDefault(e);
-  const departingDate = document.getElementById('departingDate').value;
+  console.log('::: Form Submitted :::');
+  let departingDate = document.getElementById('departingDate').value;
   const cityName = document.getElementById('city').value;
 
   // Base URL for GeoNames API
   let geonamesBaseURL = `http://api.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
 
+  Client.countDown(departingDate);
+  let days = Client.countDown(departingDate);
+
   getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
     console.log('getWebData', data);
+    let lat = data.geonames[0].lat;
+    let lon = data.geonames[0].lng;
+    Client.weatherData(lat, lon, days);
     postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,
       departingDate: departingDate,
     });
-    Client.countDown();
-    Client.weatherData();
-    updateUI();
   });
 }
 
@@ -55,22 +59,6 @@ const postData = async (url = '', data = {}) => {
   } catch (error) {
     console.log('error', error);
     // appropriately handle the error
-  }
-};
-
-/* Function to GET Project Data */
-const updateUI = async () => {
-  const request = await fetch('http://localhost:8081/all');
-  try {
-    const allData = await request.json();
-    document.getElementById('inputData').innerHTML = `
-    departingDate: ${allData.departingDate}
-    countryName: ${allData.countryName}
-    lat: ${allData.lat}
-    lng: ${allData.lng}
-    `;
-  } catch (error) {
-    console.log('error', error);
   }
 };
 

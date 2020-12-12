@@ -84,6 +84,7 @@ function weatherData(req, res) {
   projectData['max_temp'] = wData.max_temp;
   projectData['min_temp'] = wData.min_temp;
   projectData['weather_description'] = wData.weather_description;
+  projectData['datetime'] = wData.datetime;
 
   res.send(projectData);
   console.log('post projectData', projectData);
