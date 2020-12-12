@@ -1,5 +1,6 @@
 import { performAction } from './js/performAction';
 import { countDown } from './js/countDown';
+import { imageData } from './js/imageData';
 import { weatherData } from './js/weatherData';
 
 import './styles/style.scss';
@@ -7,7 +8,7 @@ import './styles/style.scss';
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', performAction);
 
-export { performAction, countDown, weatherData };
+export { performAction, countDown, imageData, weatherData };
 
 document.querySelector('#city').addEventListener('keyup', function (event) {
   if (event.keyCode === 13) {

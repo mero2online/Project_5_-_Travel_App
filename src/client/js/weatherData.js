@@ -81,6 +81,12 @@ const updateUI = async () => {
     Weather datetime: ${allData.datetime}
     `;
 
+    if (allData.totalHits > 1) {
+      document.getElementById('cityImage').innerHTML = `<img src="${allData.webformatURL}" alt="City Photo">`;
+    } else {
+      document.getElementById('cityImage').innerHTML = 'No Photo available for this city';
+    }
+
     console.log('allData', allData);
   } catch (error) {
     console.log('error', error);

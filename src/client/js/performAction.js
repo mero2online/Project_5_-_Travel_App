@@ -14,6 +14,8 @@ function performAction(e) {
   Client.countDown(departingDate);
   let days = Client.countDown(departingDate);
 
+  Client.imageData(cityName);
+
   getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
     console.log('getWebData', data);
     let lat = data.geonames[0].lat;

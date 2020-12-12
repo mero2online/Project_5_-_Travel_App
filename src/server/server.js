@@ -47,7 +47,7 @@ app.get('/test', function (req, res) {
   res.send(mockAPIResponse);
 });
 
-// GET Route
+// GET Route for all data
 app.get('/all', getData);
 
 function getData(req, res) {
@@ -55,7 +55,7 @@ function getData(req, res) {
   console.log('get projectData', projectData);
 }
 
-// POST Route
+// POST Route geonames API Data
 app.post('/geonamesData', geonamesData);
 
 function geonamesData(req, res) {
@@ -68,6 +68,7 @@ function geonamesData(req, res) {
   res.send(projectData);
 }
 
+// POST Route countdown Data
 app.post('/countDownD', countDownD);
 
 function countDownD(req, res) {
@@ -77,6 +78,7 @@ function countDownD(req, res) {
   res.send(projectData);
 }
 
+// POST Route weatherbit API Data
 app.post('/weatherData', weatherData);
 
 function weatherData(req, res) {
@@ -85,6 +87,17 @@ function weatherData(req, res) {
   projectData['min_temp'] = wData.min_temp;
   projectData['weather_description'] = wData.weather_description;
   projectData['datetime'] = wData.datetime;
+
+  res.send(projectData);
+}
+
+// POST Route pixabay API Data
+app.post('/imageData', imageData);
+
+function imageData(req, res) {
+  let iData = req.body;
+  projectData['totalHits'] = iData.totalHits;
+  projectData['webformatURL'] = iData.webformatURL;
 
   res.send(projectData);
   console.log('post projectData', projectData);
