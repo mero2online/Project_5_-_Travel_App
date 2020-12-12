@@ -57,12 +57,20 @@ function getData(req, res) {
 app.post('/geonamesData', geonamesData);
 
 function geonamesData(req, res) {
-    console.log('post req.body', req.body)
     let wData = req.body;
     projectData["countryName"] = wData.countryName
     projectData["lat"] = wData.lat
     projectData["lng"] = wData.lng
     projectData["departingDate"] = wData.departingDate
+
+    res.send(projectData)
+}
+
+app.post('/countDownD', countDownD);
+
+function countDownD(req, res) {
+    let wData = req.body;
+    projectData["days"] = wData.days
 
     res.send(projectData)
     console.log('post projectData', projectData)

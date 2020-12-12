@@ -20,7 +20,8 @@ function performAction(e) {
       lng: data.geonames[0].lng,
       departingDate: departingDate,
     });
-    updateUI(), Client.countDown();
+    Client.countDown();
+    updateUI();
   });
 }
 
@@ -68,6 +69,7 @@ const updateUI = async () => {
     countryName: ${allData.countryName}
     lat: ${allData.lat}
     lng: ${allData.lng}
+    days: ${allData.days}
     `;
   } catch (error) {
     console.log('error', error);
