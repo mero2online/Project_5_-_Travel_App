@@ -19,6 +19,7 @@ function performAction(e) {
       departingDate: departingDate,
     });
     Client.countDown();
+    Client.weatherData();
     updateUI();
   });
 }
@@ -62,7 +63,7 @@ const updateUI = async () => {
   const request = await fetch('http://localhost:8081/all');
   try {
     const allData = await request.json();
-    document.getElementById('weatherData').innerHTML = `
+    document.getElementById('inputData').innerHTML = `
     departingDate: ${allData.departingDate}
     countryName: ${allData.countryName}
     lat: ${allData.lat}

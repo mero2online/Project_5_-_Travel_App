@@ -13,10 +13,12 @@ const app = express();
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+const bodyParser = require('body-parser');
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
@@ -37,41 +39,52 @@ const port = 8081;
 const server = app.listen(port, listening);
 
 function listening() {
-    console.log(`server running on localhost: ${port}`);
-    console.log(`http://localhost:${port}/`);
+  console.log(`server running on localhost: ${port}`);
+  console.log(`http://localhost:${port}/`);
 }
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse);
-  });
+  res.send(mockAPIResponse);
+});
 
 // GET Route
-app.get('/all', getData)
+app.get('/all', getData);
 
 function getData(req, res) {
-    res.send(projectData)
-    console.log('get projectData', projectData)
+  res.send(projectData);
+  console.log('get projectData', projectData);
 }
 
 // POST Route
 app.post('/geonamesData', geonamesData);
 
 function geonamesData(req, res) {
-    let wData = req.body;
-    projectData["countryName"] = wData.countryName
-    projectData["lat"] = wData.lat
-    projectData["lng"] = wData.lng
-    projectData["departingDate"] = wData.departingDate
+  let gData = req.body;
+  projectData['countryName'] = gData.countryName;
+  projectData['lat'] = gData.lat;
+  projectData['lng'] = gData.lng;
+  projectData['departingDate'] = gData.departingDate;
 
-    res.send(projectData)
+  res.send(projectData);
 }
 
 app.post('/countDownD', countDownD);
 
 function countDownD(req, res) {
-    let wData = req.body;
-    projectData["days"] = wData.days
+  let cData = req.body;
+  projectData['days'] = cData.days;
 
-    res.send(projectData)
-    console.log('post projectData', projectData)
+  res.send(projectData);
+}
+
+app.post('/weatherData', weatherData);
+
+function weatherData(req, res) {
+  let wData = req.body;
+  projectData['max_temp'] = wData.max_temp;
+  projectData['min_temp'] = wData.min_temp;
+  projectData['weather_description'] = wData.weather_description;
+
+  res.send(projectData);
+  console.log('post projectData', projectData);
 }
