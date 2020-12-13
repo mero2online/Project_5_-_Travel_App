@@ -73,7 +73,7 @@ function geonamesData(req, res) {
   projectData['countryName'] = gData.countryName;
   projectData['lat'] = gData.lat;
   projectData['lng'] = gData.lng;
-  projectData['departingDate'] = gData.departingDate;
+  projectData['startDate'] = gData.startDate;
 
   res.send(projectData);
 }
@@ -83,7 +83,8 @@ app.post('/countDownD', countDownD);
 
 function countDownD(req, res) {
   let cData = req.body;
-  projectData['days'] = cData.days;
+  projectData['countDownDays'] = cData.countDownDays;
+  projectData['lengthOfTrip'] = cData.lengthOfTrip;
 
   res.send(projectData);
 }

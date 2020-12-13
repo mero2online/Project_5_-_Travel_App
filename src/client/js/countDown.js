@@ -1,17 +1,16 @@
-function countDown(departingDate) {
-  
-  let DD = departingDate;
-  let d = new Date();
-  let dateForCountDown = new Date(DD);
-  console.log(dateForCountDown);
+function countDown(startDate, endDate) {
 
-  let duration = dateForCountDown - d;
-  let days = Math.floor(duration / (1000 * 60 * 60 * 24));
+  let lengthOfTrip = Math.floor(
+    (new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)
+  );
+
+  let countDownDays = Math.floor((new Date(startDate) - new Date()) / (1000 * 60 * 60 * 24));
 
   postDataD('http://localhost:8081/countDownD', {
-    days: days,
+    countDownDays: countDownDays,
+    lengthOfTrip: lengthOfTrip,
   });
-  return days;
+  return countDownDays;
 }
 
 /* Function to POST data */

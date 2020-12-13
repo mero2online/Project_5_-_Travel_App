@@ -1,5 +1,4 @@
-function weatherData(lat, lon, days) {
-
+function weatherData(lat, lon, countDownDays) {
   // Personal API Key for WeatherBit API
   let weatherbitAPIkey = process.env.WEATHERBIT_API_KEY;
   // Base URL for weatherbit API
@@ -11,12 +10,12 @@ function weatherData(lat, lon, days) {
     .then(function (res) {
       console.log(res);
 
-      if (days <= 14) {
+      if (countDownDays <= 14) {
         postWeatherData('http://localhost:8081/weatherData', {
-          max_temp: res.data[days + 1].max_temp,
-          min_temp: res.data[days + 1].min_temp,
-          weather_description: res.data[days + 1].weather.description,
-          datetime: res.data[days + 1].datetime,
+          max_temp: res.data[countDownDays + 1].max_temp,
+          min_temp: res.data[countDownDays + 1].min_temp,
+          weather_description: res.data[countDownDays + 1].weather.description,
+          datetime: res.data[countDownDays + 1].datetime,
         });
       } else {
         postWeatherData('http://localhost:8081/weatherData', {
@@ -61,28 +60,35 @@ const updateUI = async () => {
   try {
     const allData = await request.json();
     document.getElementById('inputData').innerHTML = `
-    departingDate: ${allData.departingDate}
+    startDate: ${allData.startDate}
     countryName: ${allData.countryName}
     lat: ${allData.lat}
     lng: ${allData.lng}
     `;
 
-    document.getElementById('countdown').innerHTML = `${allData.days} days`;
-    if (allData.days === 1) {
-      document.getElementById('countdown').innerHTML = `${allData.days} day`;
-    } else if (allData.days < 0) {
+    document.getElementById('lengthOfTrip').innerHTML = `Length of trip: ${allData.lengthOfTrip} days`;
+    if (allData.lengthOfTrip === 1) {
+      document.getElementById('lengthOfTrip').innerHTML = `Length of trip: ${allData.lengthOfTrip} day`;
+    }
+
+    document.getElementById('countdown').innerHTML = `Countdown: ${allData.countDownDays} days`;
+    if (allData.countDownDays === 1) {
+      document.getElementById('countdown').innerHTML = `Countdown: ${allData.countDownDays} day`;
+    } else if (allData.countDownDays < 0) {
       document.getElementById('countdown').innerHTML = 'EXPIRED';
     }
 
-    if (allData.days <= 14) {
+    if (allData.countDownDays <= 14) {
       document.getElementById('weatherData').innerHTML = `Weather Data:
     High Temp: ${allData.max_temp} <sup>o</sup>C
     Low Temp: ${allData.min_temp} <sup>o</sup>C
     Weather description: ${allData.weather_description}
     Weather datetime: ${allData.datetime}
     `;
-    }else{
-      document.getElementById('weatherData').innerHTML = `Weather Data: No data available for this date`;
+    } else {
+      document.getElementById(
+        'weatherData'
+      ).innerHTML = `Weather Data: No data available for this date`;
     }
 
     if (allData.totalHits > 0) {

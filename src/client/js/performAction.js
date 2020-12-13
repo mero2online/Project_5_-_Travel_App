@@ -2,16 +2,17 @@
 function performAction(e) {
   event.preventDefault(e);
   console.log('::: Form Submitted :::');
-  let departingDate = document.getElementById('departingDate').value;
+  let startDate = document.getElementById('startDate').value;
+  let endDate = document.getElementById('endDate').value;
   const cityName = document.getElementById('city').value;
-  
+
   // Personal API Key for GeoNames API
   const geonamesAPIkey = process.env.GEONAMES_API_KEY;
   // Base URL for GeoNames API
   let geonamesBaseURL = `http://api.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
 
-  Client.countDown(departingDate);
-  let days = Client.countDown(departingDate);
+  Client.countDown(startDate, endDate);
+  let countDownDays = Client.countDown(startDate, endDate);
 
   Client.imageData(cityName);
 
@@ -19,12 +20,12 @@ function performAction(e) {
     console.log('getWebData', data);
     let lat = data.geonames[0].lat;
     let lon = data.geonames[0].lng;
-    Client.weatherData(lat, lon, days);
+    Client.weatherData(lat, lon, countDownDays);
     postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,
-      departingDate: departingDate,
+      startDate: startDate,
     });
   });
 }
