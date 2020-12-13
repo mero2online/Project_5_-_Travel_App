@@ -22,13 +22,21 @@ function weatherData(lat, lon, days) {
       //   Weather description: ${res.data[days + 1].weather.description}
       //   Weather datetime: ${res.data[days + 1].datetime}
       //   `;
-
-      postWeatherData('http://localhost:8081/weatherData', {
-        max_temp: res.data[days + 1].max_temp,
-        min_temp: res.data[days + 1].min_temp,
-        weather_description: res.data[days + 1].weather.description,
-        datetime: res.data[days + 1].datetime,
-      });
+      if (days <= 14) {
+        postWeatherData('http://localhost:8081/weatherData', {
+          max_temp: res.data[days + 1].max_temp,
+          min_temp: res.data[days + 1].min_temp,
+          weather_description: res.data[days + 1].weather.description,
+          datetime: res.data[days + 1].datetime,
+        });
+      } else {
+        postWeatherData('http://localhost:8081/weatherData', {
+          max_temp: 0,
+          min_temp: 0,
+          weather_description: 0,
+          datetime: 0,
+        });
+      }
       // updateUI();
       // setTimeout(updateUI, 100);
     });
@@ -47,7 +55,7 @@ const postWeatherData = async (url = '', data = {}) => {
     body: JSON.stringify(data),
   });
 
-  // after postWeatherData Update UI 
+  // after postWeatherData Update UI
   updateUI();
 
   try {
@@ -78,12 +86,16 @@ const updateUI = async () => {
       document.getElementById('countdown').innerHTML = 'EXPIRED';
     }
 
-    document.getElementById('weatherData').innerHTML = `Weather Data:
-    High Temp: ${allData.max_temp} C
-    Low Temp: ${allData.min_temp} C
+    if (allData.days <= 14) {
+      document.getElementById('weatherData').innerHTML = `Weather Data:
+    High Temp: ${allData.max_temp} <sup>o</sup>C
+    Low Temp: ${allData.min_temp} <sup>o</sup>C
     Weather description: ${allData.weather_description}
     Weather datetime: ${allData.datetime}
     `;
+    }else{
+      document.getElementById('weatherData').innerHTML = `Weather Data: No data available for this date`;
+    }
 
     if (allData.totalHits > 0) {
       document.getElementById(
