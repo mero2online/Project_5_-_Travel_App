@@ -29,7 +29,8 @@ function weatherData(lat, lon, days) {
         weather_description: res.data[days + 1].weather.description,
         datetime: res.data[days + 1].datetime,
       });
-      updateUI();
+      // updateUI();
+      // setTimeout(updateUI, 100);
     });
   // });
 }
@@ -45,6 +46,9 @@ const postWeatherData = async (url = '', data = {}) => {
     },
     body: JSON.stringify(data),
   });
+
+  // after postWeatherData Update UI 
+  updateUI();
 
   try {
     const newData = await res.json();
@@ -73,7 +77,7 @@ const updateUI = async () => {
     } else if (allData.days < 0) {
       document.getElementById('countdown').innerHTML = 'EXPIRED';
     }
-    
+
     document.getElementById('weatherData').innerHTML = `Weather Data:
     High Temp: ${allData.max_temp} C
     Low Temp: ${allData.min_temp} C
@@ -81,10 +85,13 @@ const updateUI = async () => {
     Weather datetime: ${allData.datetime}
     `;
 
-    if (allData.totalHits > 1) {
-      document.getElementById('cityImage').innerHTML = `<img src="${allData.webformatURL}" alt="City Photo">`;
+    if (allData.totalHits > 0) {
+      document.getElementById(
+        'cityImage'
+      ).innerHTML = `<img src="${allData.webformatURL}" alt="City Photo">`;
     } else {
-      document.getElementById('cityImage').innerHTML = 'No Photo available for this city';
+      document.getElementById('cityImage').innerHTML =
+        'No Photo available for this city';
     }
 
     console.log('allData', allData);
