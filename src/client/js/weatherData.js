@@ -1,10 +1,4 @@
 function weatherData(lat, lon, days) {
-  // fetch('http://localhost:8081/all')
-  //   .then((data) => data.json())
-  //   .then(function (data) {
-  //     let lat = data.lat;
-  //     let lon = data.lng;
-  //     let days = data.days;
 
   // Personal API Key for WeatherBit API
   let weatherbitAPIkey = process.env.WEATHERBIT_API_KEY;
@@ -17,12 +11,6 @@ function weatherData(lat, lon, days) {
     .then(function (res) {
       console.log(res);
 
-      // document.getElementById('weatherData').innerHTML = `Weather Data:
-      //   High Temp: ${res.data[days + 1].max_temp} C
-      //   Low Temp: ${res.data[days + 1].min_temp} C
-      //   Weather description: ${res.data[days + 1].weather.description}
-      //   Weather datetime: ${res.data[days + 1].datetime}
-      //   `;
       if (days <= 14) {
         postWeatherData('http://localhost:8081/weatherData', {
           max_temp: res.data[days + 1].max_temp,
@@ -41,7 +29,6 @@ function weatherData(lat, lon, days) {
       // updateUI();
       // setTimeout(updateUI, 100);
     });
-  // });
 }
 
 /* Function to POST data */

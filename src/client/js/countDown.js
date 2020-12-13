@@ -1,29 +1,16 @@
 function countDown(departingDate) {
-  // fetch('http://localhost:8081/all')
-  //   .then((data) => data.json())
-  //   .then(function (data) {
-  //     let departingDate = data.departingDate;
+  
   let DD = departingDate;
   let d = new Date();
   let dateForCountDown = new Date(DD);
   console.log(dateForCountDown);
-  //   let countDownCounter = setInterval(function () {
-  let duration = dateForCountDown - d;
 
+  let duration = dateForCountDown - d;
   let days = Math.floor(duration / (1000 * 60 * 60 * 24));
 
-  //   document.getElementById('countdown').innerHTML = `${days} days`;
-  //   if (days === 1) {
-  //     document.getElementById('countdown').innerHTML = `${days} day`;
-  //   } else if (duration < 0) {
-  //     // clearInterval(countDownCounter);
-  //     document.getElementById('countdown').innerHTML = 'EXPIRED';
-  //   }
-  // }, 1000);
   postDataD('http://localhost:8081/countDownD', {
     days: days,
   });
-  // });
   return days;
 }
 
