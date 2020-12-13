@@ -1,13 +1,12 @@
-// Personal API Key for GeoNames API
-const geonamesAPIkey = 'mohamedomar';
-
 /* Function called by event listener */
 function performAction(e) {
   event.preventDefault(e);
   console.log('::: Form Submitted :::');
   let departingDate = document.getElementById('departingDate').value;
   const cityName = document.getElementById('city').value;
-
+  
+  // Personal API Key for GeoNames API
+  const geonamesAPIkey = process.env.GEONAMES_API_KEY;
   // Base URL for GeoNames API
   let geonamesBaseURL = `http://api.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
 

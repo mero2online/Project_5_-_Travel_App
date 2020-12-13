@@ -6,7 +6,8 @@ function weatherData(lat, lon, days) {
   //     let lon = data.lng;
   //     let days = data.days;
 
-  let weatherbitAPIkey = '5bf765d1c8224a3a8eb3995c6c80c3a3';
+  // Personal API Key for WeatherBit API
+  let weatherbitAPIkey = process.env.WEATHERBIT_API_KEY;
   // Base URL for weatherbit API
   let weatherbitBaseURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${weatherbitAPIkey}`;
 

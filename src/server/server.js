@@ -25,6 +25,16 @@ app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors());
 
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Personal API Key for geonames
+const geonamesAPIkey = process.env.GEONAMES_API_KEY;
+// Personal API Key for weatherbit
+const weatherbitAPIkey = process.env.WEATHERBIT_API_KEY;
+// Personal API Key for pixabay
+const pixabayAPIkey = process.env.PIXABAY_API_KEY;
+
 // Initialize the main project folder
 app.use(express.static('dist'));
 
