@@ -1,18 +1,12 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = {
-  entry: './src/client/index.js',
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = merge(common, {
   mode: 'development',
   devtool: 'source-map',
   stats: 'verbose',
-  output: {
-    libraryTarget: 'var',
-    library: 'Client',
-  },
   module: {
     rules: [
       {
@@ -27,10 +21,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/client/views/index.html',
-      filename: './index.html',
-    }),
     new CleanWebpackPlugin({
       // Simulate the removal of files
       dry: true,
@@ -40,6 +30,5 @@ module.exports = {
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
     }),
-    new Dotenv(),
   ],
-};
+});
