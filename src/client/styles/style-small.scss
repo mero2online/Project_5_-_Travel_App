@@ -1,0 +1,14 @@
+@media only screen and (max-width: 400px) {
+  .city {
+    input {
+      font-size: unset;
+    }
+  }
+  .start-end-date {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .info {
+    min-width: 200px;
+  }
+}

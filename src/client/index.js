@@ -3,7 +3,10 @@ import { countDown } from './js/countDown';
 import { imageData } from './js/imageData';
 import { weatherData } from './js/weatherData';
 
-import './styles/style.scss';
+import './styles/style-main.scss';
+import './styles/style-larg.scss';
+import './styles/style-medium.scss';
+import './styles/style-small.scss';
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', performAction);
