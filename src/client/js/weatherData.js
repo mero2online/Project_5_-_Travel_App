@@ -42,67 +42,12 @@ const postWeatherData = async (url = '', data = {}) => {
     body: JSON.stringify(data),
   });
 
-  // after postWeatherData Update UI
-  updateUI();
-
   try {
     const newData = await res.json();
     return newData;
   } catch (error) {
     console.log('error', error);
     // appropriately handle the error
-  }
-};
-
-/* Function to GET Project Data */
-const updateUI = async () => {
-  const request = await fetch('http://localhost:8081/all');
-  try {
-    const allData = await request.json();
-    document.getElementById('inputData').innerHTML = `
-    startDate: ${allData.startDate}
-    countryName: ${allData.countryName}
-    lat: ${allData.lat}
-    lng: ${allData.lng}
-    `;
-
-    document.getElementById('lengthOfTrip').innerHTML = `Length of trip: ${allData.lengthOfTrip} days`;
-    if (allData.lengthOfTrip === 1) {
-      document.getElementById('lengthOfTrip').innerHTML = `Length of trip: ${allData.lengthOfTrip} day`;
-    }
-
-    document.getElementById('countdown').innerHTML = `Countdown: ${allData.countDownDays} days`;
-    if (allData.countDownDays === 1) {
-      document.getElementById('countdown').innerHTML = `Countdown: ${allData.countDownDays} day`;
-    } else if (allData.countDownDays < 0) {
-      document.getElementById('countdown').innerHTML = 'EXPIRED';
-    }
-
-    if (allData.countDownDays <= 14) {
-      document.getElementById('weatherData').innerHTML = `Weather Data:
-    High Temp: ${allData.max_temp} <sup>o</sup>C
-    Low Temp: ${allData.min_temp} <sup>o</sup>C
-    Weather description: ${allData.weather_description}
-    Weather datetime: ${allData.datetime}
-    `;
-    } else {
-      document.getElementById(
-        'weatherData'
-      ).innerHTML = `Weather Data: No data available for this date`;
-    }
-
-    if (allData.totalHits > 0) {
-      document.getElementById(
-        'cityImage'
-      ).innerHTML = `<img src="${allData.webformatURL}" alt="City Photo">`;
-    } else {
-      document.getElementById('cityImage').innerHTML =
-        'No Photo available for this city';
-    }
-
-    console.log('allData', allData);
-  } catch (error) {
-    console.log('error', error);
   }
 };
 

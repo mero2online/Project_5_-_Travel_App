@@ -14,13 +14,16 @@ function performAction(e) {
   Client.countDown(startDate, endDate);
   let countDownDays = Client.countDown(startDate, endDate);
 
-  Client.imageData(cityName);
-
   getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
     console.log('getWebData', data);
+
     let lat = data.geonames[0].lat;
     let lon = data.geonames[0].lng;
     Client.weatherData(lat, lon, countDownDays);
+
+    let countryName = data.geonames[0].countryName;
+    Client.imageData(cityName, countryName);
+    
     postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,

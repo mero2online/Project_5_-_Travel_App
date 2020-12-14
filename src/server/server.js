@@ -107,8 +107,10 @@ app.post('/imageData', imageData);
 
 function imageData(req, res) {
   let iData = req.body;
-  projectData['totalHits'] = iData.totalHits;
-  projectData['webformatURL'] = iData.webformatURL;
+  projectData['cityTotalHits'] = iData.cityTotalHits;
+  projectData['cityWebformatURL'] = iData.cityWebformatURL;
+  projectData['countryTotalHits'] = iData.countryTotalHits;
+  projectData['countryWebformatURL'] = iData.countryWebformatURL;
 
   res.send(projectData);
   console.log('post projectData', projectData);
