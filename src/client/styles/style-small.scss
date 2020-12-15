@@ -10,6 +10,7 @@
   }
   .info {
     min-width: unset;
+    max-width: 300px;
   }
 
   #countryInfo {
@@ -19,7 +20,7 @@
       height: 80px;
     }
     table {
-      font-size: 18px;
+      font-size: 15px;
       width: 100px;
       margin: auto;
       tr,
@@ -39,4 +40,10 @@
       height: 150px;
     }
   }
-}
+
+  .save-remove-trip {
+    button {
+      font-size: unset;
+    }
+  }
+} /* Don't buy any styling after this curly bracket */

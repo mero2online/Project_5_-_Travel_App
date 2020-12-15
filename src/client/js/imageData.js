@@ -38,24 +38,6 @@ function imageData(cityName, countryName) {
       countryWebformatURL: countryWebformatURL,
     });
   });
-  // fetch data from pixabay API
-  // fetch(pixabayBaseURL)
-  //   .then((res) => res.json())
-  //   .then(function (res) {
-  //     console.log(res);
-
-  //     if (res.totalHits > 0) {
-  //       postImageData('http://localhost:8081/imageData', {
-  //         totalHits: res.totalHits,
-  //         webformatURL: res.hits[1].webformatURL,
-  //       });
-  //     } else {
-  //       postImageData('http://localhost:8081/imageData', {
-  //         totalHits: res.totalHits,
-  //         webformatURL: 0,
-  //       });
-  //     }
-  //   });
 }
 
 /* Function to POST data */

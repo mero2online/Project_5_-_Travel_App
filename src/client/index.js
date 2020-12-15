@@ -38,7 +38,7 @@ document
     document.getElementById('startDate').value = '';
     document.getElementById('endDate').value = '';
 
-    localStorage.clear();
+    localStorage.clear(); // clear all data stored in localStorage
   });
 
 // Event listener to save trip data

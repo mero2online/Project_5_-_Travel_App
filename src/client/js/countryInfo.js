@@ -8,6 +8,7 @@ function countryInfo(countryName) {
     .then(function (res) {
       console.log(res);
 
+      // POST Country information to server
       postCountryInfoData('http://localhost:8081/countryInfo', {
         alpha3Code: res[0].alpha3Code,
         capital: res[0].capital,

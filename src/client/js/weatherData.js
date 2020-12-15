@@ -4,31 +4,31 @@ function weatherData(lat, lon, countDownDays) {
   // Base URL for weatherbit API
   let weatherbitBaseURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${weatherbitAPIkey}`;
 
-  // fetch data from weatherbit API and print it to html file
+  // fetch data from weatherbit API
   fetch(weatherbitBaseURL)
     .then((res) => res.json())
     .then(function (res) {
       console.log(res);
 
+      let max_temp, min_temp, weather_description, datetime, weatherIcon;
       if (countDownDays <= 14) {
-        postWeatherData('http://localhost:8081/weatherData', {
-          max_temp: res.data[countDownDays + 1].max_temp,
-          min_temp: res.data[countDownDays + 1].min_temp,
-          weather_description: res.data[countDownDays + 1].weather.description,
-          datetime: res.data[countDownDays + 1].datetime,
-          weatherIcon: res.data[countDownDays + 1].weather.icon,
-        });
+        (max_temp = res.data[countDownDays + 1].max_temp),
+          (min_temp = res.data[countDownDays + 1].min_temp),
+          (weather_description =
+            res.data[countDownDays + 1].weather.description),
+          (datetime = res.data[countDownDays + 1].datetime),
+          (weatherIcon = res.data[countDownDays + 1].weather.icon);
       } else {
-        postWeatherData('http://localhost:8081/weatherData', {
-          max_temp: 0,
-          min_temp: 0,
-          weather_description: 0,
-          datetime: 0,
-          weatherIcon: 0,
-        });
+        max_temp, min_temp, weather_description, datetime, (weatherIcon = 0);
       }
-      // updateUI();
-      // setTimeout(updateUI, 100);
+
+      postWeatherData('http://localhost:8081/weatherData', {
+        max_temp: max_temp,
+        min_temp: min_temp,
+        weather_description: weather_description,
+        datetime: datetime,
+        weatherIcon: weatherIcon,
+      });
     });
 }
 

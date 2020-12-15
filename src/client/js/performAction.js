@@ -11,22 +11,29 @@ function performAction(e) {
   // Base URL for GeoNames API
   let geonamesBaseURL = `http://api.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
 
+  // Execute countDown function to calculate countdown days to trip and calculate length of trip
   Client.countDown(startDate, endDate);
   let countDownDays = Client.countDown(startDate, endDate);
 
+  // fetch geonamesAPI to got Country name, Latitude, Longitude
   getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
     console.log('getWebData', data);
 
     let countryName = data.geonames[0].countryName;
 
+    // Execute countryInfo function to got Countries data
     Client.countryInfo(countryName);
 
+    // Execute imageData function to got city photo and country photo
     Client.imageData(cityName, countryName);
 
     let lat = data.geonames[0].lat;
     let lon = data.geonames[0].lng;
+
+    // Execute weatherData function to got Weather forecasts for the city
     Client.weatherData(lat, lon, countDownDays);
 
+    // POST geonames API Data, start and end date to server
     postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,

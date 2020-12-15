@@ -10,11 +10,19 @@
       'printTrip generate';
   }
   .info {
-    min-width: 400px;
+    min-width: 300px;
+    max-width: 400px;
   }
 
   .images {
     display: flex;
     flex-direction: column;
   }
-}
+  #countryInfo {
+    table {
+      font-size: 17px;
+      width: 100px;
+      margin: auto;
+    }
+  }
+} /* Don't buy any styling after this curly bracket */

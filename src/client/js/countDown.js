@@ -1,11 +1,15 @@
 function countDown(startDate, endDate) {
-
+  // Calculate the length of trip
   let lengthOfTrip = Math.floor(
     (new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)
   );
 
-  let countDownDays = Math.floor((new Date(startDate) - new Date()) / (1000 * 60 * 60 * 24));
+  // Calculate countdown days to trip
+  let countDownDays = Math.floor(
+    (new Date(startDate) - new Date()) / (1000 * 60 * 60 * 24)
+  );
 
+  // POST countdown days and length of trip to server
   postDataD('http://localhost:8081/countDownD', {
     countDownDays: countDownDays,
     lengthOfTrip: lengthOfTrip,
