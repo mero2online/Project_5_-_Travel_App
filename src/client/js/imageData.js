@@ -94,14 +94,22 @@ const updateUI = async () => {
     lng: ${allData.lng}
     `;
 
-    document.getElementById('lengthOfTrip').innerHTML = `Length of trip: ${allData.lengthOfTrip} days`;
+    document.getElementById(
+      'lengthOfTrip'
+    ).innerHTML = `Length of trip: ${allData.lengthOfTrip} days`;
     if (allData.lengthOfTrip === 1) {
-      document.getElementById('lengthOfTrip').innerHTML = `Length of trip: ${allData.lengthOfTrip} day`;
+      document.getElementById(
+        'lengthOfTrip'
+      ).innerHTML = `Length of trip: ${allData.lengthOfTrip} day`;
     }
 
-    document.getElementById('countdown').innerHTML = `Countdown: ${allData.countDownDays} days`;
+    document.getElementById(
+      'countdown'
+    ).innerHTML = `Countdown: ${allData.countDownDays} days`;
     if (allData.countDownDays === 1) {
-      document.getElementById('countdown').innerHTML = `Countdown: ${allData.countDownDays} day`;
+      document.getElementById(
+        'countdown'
+      ).innerHTML = `Countdown: ${allData.countDownDays} day`;
     } else if (allData.countDownDays < 0) {
       document.getElementById('countdown').innerHTML = 'EXPIRED';
     }
@@ -120,24 +128,26 @@ const updateUI = async () => {
     }
 
     if (allData.cityTotalHits > 0) {
-      document.getElementById(
-        'cityImage'
-      ).innerHTML = `<img src="${allData.cityWebformatURL}" alt="City Photo">`;
+      document.getElementById('cityImage').innerHTML = `<figure>
+      <figcaption> City Photo </figcaption>
+      <img src="${allData.cityWebformatURL}" alt="City Photo">
+      </figure>`;
     } else {
       document.getElementById('cityImage').innerHTML =
         'No Photo available for this city';
     }
 
     if (allData.countryTotalHits > 0) {
-      document.getElementById(
-        'countryImage'
-      ).innerHTML = `<img src="${allData.countryWebformatURL}" alt="Country Photo">`;
+      document.getElementById('countryImage').innerHTML = `<figure>
+      <figcaption> Country Photo </figcaption>
+      <img src="${allData.countryWebformatURL}" alt="Country Photo">
+      </figure>`;
     } else {
       document.getElementById('countryImage').innerHTML =
         'No Photo available for this country';
     }
 
-    document.getElementById('countryInfo').innerHTML = `
+    document.getElementById('countryInfo').innerHTML = `<table>
     <tr><td>Alpha3Code:</td> <td>${allData.alpha3Code}</td></tr>
     <tr><td>Capital:</td> <td>${allData.capital}</td></tr>
     <tr><td>Region:</td> <td>${allData.region}</td></tr>
@@ -149,6 +159,7 @@ const updateUI = async () => {
     <tr><td>CurrenciesSymbol:</td> <td>${allData.currenciesSymbol}</td></tr>
     <tr><td>LanguagesName:</td> <td>${allData.languagesName}</td></tr>
     <tr><td>Flag:</td> <td><img src="${allData.flag}" alt="City Photo"></td></tr>
+    </table>
     `;
 
     console.log('allData', allData);

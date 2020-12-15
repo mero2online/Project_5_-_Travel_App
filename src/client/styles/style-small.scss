@@ -9,6 +9,11 @@
     align-items: stretch;
   }
   .info {
-    min-width: 200px;
+    min-width: unset;
   }
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
 }
