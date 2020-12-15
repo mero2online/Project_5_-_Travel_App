@@ -99,6 +99,7 @@ function weatherData(req, res) {
   projectData['min_temp'] = wData.min_temp;
   projectData['weather_description'] = wData.weather_description;
   projectData['datetime'] = wData.datetime;
+  projectData['weatherIcon'] = wData.weatherIcon;
 
   res.send(projectData);
 }

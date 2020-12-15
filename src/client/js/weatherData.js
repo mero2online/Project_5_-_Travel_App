@@ -16,6 +16,7 @@ function weatherData(lat, lon, countDownDays) {
           min_temp: res.data[countDownDays + 1].min_temp,
           weather_description: res.data[countDownDays + 1].weather.description,
           datetime: res.data[countDownDays + 1].datetime,
+          weatherIcon: res.data[countDownDays + 1].weather.icon,
         });
       } else {
         postWeatherData('http://localhost:8081/weatherData', {
@@ -23,6 +24,7 @@ function weatherData(lat, lon, countDownDays) {
           min_temp: 0,
           weather_description: 0,
           datetime: 0,
+          weatherIcon: 0,
         });
       }
       // updateUI();
