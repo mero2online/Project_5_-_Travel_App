@@ -22,7 +22,7 @@ document.querySelector('#city').addEventListener('keyup', function (event) {
   }
 });
 
-// Event listener to remove trip button to remove the trip
+// Event listener to remove trip data
 document
   .getElementById('removeTrip')
   .addEventListener('click', function (event) {
@@ -31,4 +31,42 @@ document
       element.textContent = '';
     });
     event.target.parentNode.parentNode.style.display = 'none';
+
+    document.getElementById('city').value = '';
+    document.getElementById('startDate').value = '';
+    document.getElementById('endDate').value = '';
+
+    localStorage.clear();
   });
+
+// Event listener to save trip data
+document.getElementById('saveTrip').addEventListener('click', function (event) {
+  event.preventDefault();
+  populateStorage();
+});
+
+/* 
+Use Local Storage to save the data so that when they close, 
+then revisit the page, their information is still there.
+*/
+if (!localStorage.getItem('city')) {
+  populateStorage();
+} else {
+  setData();
+}
+
+function populateStorage() {
+  localStorage.setItem('city', document.getElementById('city').value);
+  localStorage.setItem('startDate', document.getElementById('startDate').value);
+  localStorage.setItem('endDate', document.getElementById('endDate').value);
+}
+
+function setData() {
+  var currentCity = localStorage.getItem('city');
+  var currentStartDate = localStorage.getItem('startDate');
+  var currentEndDate = localStorage.getItem('endDate');
+
+  document.getElementById('city').value = currentCity;
+  document.getElementById('startDate').value = currentStartDate;
+  document.getElementById('endDate').value = currentEndDate;
+}
