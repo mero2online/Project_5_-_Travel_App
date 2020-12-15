@@ -38,8 +38,8 @@ function performAction(e) {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,
-      startDate: startDate,
-      endDate: endDate,
+      startDate: new Date(startDate).toLocaleDateString(),
+      endDate: new Date(endDate).toLocaleDateString(),
     });
   });
 }

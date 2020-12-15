@@ -26,7 +26,7 @@ function weatherData(lat, lon, countDownDays) {
         max_temp: max_temp,
         min_temp: min_temp,
         weather_description: weather_description,
-        datetime: datetime,
+        datetime: new Date(datetime).toLocaleDateString(),
         weatherIcon: weatherIcon,
       });
     });
@@ -67,8 +67,6 @@ const updateUI = async () => {
     <p>Start Date: ${allData.startDate}</p>
     <p>End Date: ${allData.endDate}</p>
     <p>Country Name: ${allData.countryName}</p>
-    <p>Latitude: ${allData.lat}</p>
-    <p>Longitude: ${allData.lng}</p>
     `;
 
     document.getElementById(
@@ -93,11 +91,11 @@ const updateUI = async () => {
 
     if (allData.countDownDays <= 14) {
       document.getElementById('weatherData').innerHTML = `<div>
-      <p>Weather Data:<p>
+      <h3>Weather forecasts</h3>
+      <p>Weather date: ${allData.datetime}</p>
       <p>High Temp: ${allData.max_temp} <sup>o</sup>C</p>
       <p>Low Temp: ${allData.min_temp} <sup>o</sup>C</p>
       <p>Weather description: ${allData.weather_description}</p>
-      <p>Weather date: ${allData.datetime}</p>
       <div>
       <div><p>Weather icon:</p> <img src="https://www.weatherbit.io/static/img/icons/${allData.weatherIcon}.png" alt="Weather Icon"></div>
     `;
@@ -127,7 +125,9 @@ const updateUI = async () => {
         'No Photo available for this country';
     }
 
-    document.getElementById('countryInfo').innerHTML = `<table>
+    document.getElementById('countryInfo').innerHTML = `
+    <h3>Country Info</h3>
+    <table>
     <tr><td>Alpha3Code:</td> <td>${allData.alpha3Code}</td></tr>
     <tr><td>Capital:</td> <td>${allData.capital}</td></tr>
     <tr><td>Region:</td> <td>${allData.region}</td></tr>
