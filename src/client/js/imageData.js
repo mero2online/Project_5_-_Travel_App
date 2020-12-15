@@ -137,6 +137,20 @@ const updateUI = async () => {
         'No Photo available for this country';
     }
 
+    document.getElementById('countryInfo').innerHTML = `
+    <tr><td>Alpha3Code:</td> <td>${allData.alpha3Code}</td></tr>
+    <tr><td>Capital:</td> <td>${allData.capital}</td></tr>
+    <tr><td>Region:</td> <td>${allData.region}</td></tr>
+    <tr><td>Demonym:</td> <td>${allData.demonym}</td></tr>
+    <tr><td>Timezones:</td> <td>${allData.timezones}</td></tr>
+    <tr><td>NativeName:</td> <td>${allData.nativeName}</td></tr>
+    <tr><td>CurrenciesCode:</td> <td>${allData.currenciesCode}</td></tr>
+    <tr><td>CurrenciesName:</td> <td>${allData.currenciesName}</td></tr>
+    <tr><td>CurrenciesSymbol:</td> <td>${allData.currenciesSymbol}</td></tr>
+    <tr><td>LanguagesName:</td> <td>${allData.languagesName}</td></tr>
+    <tr><td>Flag:</td> <td><img src="${allData.flag}" alt="City Photo"></td></tr>
+    `;
+
     console.log('allData', allData);
   } catch (error) {
     console.log('error', error);

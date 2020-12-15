@@ -115,3 +115,23 @@ function imageData(req, res) {
   res.send(projectData);
   console.log('post projectData', projectData);
 }
+
+// POST Route countdown Data
+app.post('/countryInfo', countryInfo);
+
+function countryInfo(req, res) {
+  let coData = req.body;
+  projectData['alpha3Code'] = coData.alpha3Code;
+  projectData['capital'] = coData.capital;
+  projectData['region'] = coData.region;
+  projectData['demonym'] = coData.demonym;
+  projectData['timezones'] = coData.timezones;
+  projectData['nativeName'] = coData.nativeName;
+  projectData['currenciesCode'] = coData.currenciesCode;
+  projectData['currenciesName'] = coData.currenciesName;
+  projectData['currenciesSymbol'] = coData.currenciesSymbol;
+  projectData['languagesName'] = coData.languagesName;
+  projectData['flag'] = coData.flag;
+
+  res.send(projectData);
+}

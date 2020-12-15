@@ -1,14 +1,14 @@
 body {
-  background: #fffff8;
+  background: linear-gradient(#067cb3, #06969b, #067cb3);
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 #app {
   display: grid;
-  // grid-auto-rows: minmax(1em, auto);
-  grid-template-rows: 20px 1fr 1fr 2fr;
+  grid-auto-rows: minmax(1em, auto);
+  // grid-template-rows: 20px 1fr 1fr 2fr;
   grid-template-columns: 1fr;
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(#067cb3, #06969b, #067cb3);
   color: #f0d43a;
   justify-items: center;
@@ -107,6 +107,16 @@ button:hover {
 
 h1 {
   font-size: 36px;
+}
+
+#countryInfo {
+  font-weight: bold;
+  tr,
+  td {
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+  }
 }
 
 /* Reset style for HTML element on active to have no border*/

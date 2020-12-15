@@ -22,8 +22,11 @@ function performAction(e) {
     Client.weatherData(lat, lon, countDownDays);
 
     let countryName = data.geonames[0].countryName;
+
+    Client.countryInfo(countryName);
+
     Client.imageData(cityName, countryName);
-    
+
     postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
