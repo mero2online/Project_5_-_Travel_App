@@ -11,8 +11,32 @@
   .info {
     min-width: unset;
   }
+
+  #countryInfo {
+    font-weight: bold;
+    img {
+      width: 100px;
+      height: 80px;
+    }
+    table {
+      font-size: 18px;
+      width: 100px;
+      margin: auto;
+      tr,
+      td {
+        border: 1px solid #a1a1af;
+        padding: 5px;
+        margin: 5px;
+      }
+    }
+  }
+
   .images {
     display: flex;
     flex-direction: column;
+    img {
+      width: 200px;
+      height: 150px;
+    }
   }
 }
