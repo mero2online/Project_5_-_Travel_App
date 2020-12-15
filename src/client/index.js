@@ -27,9 +27,11 @@ document
   .getElementById('removeTrip')
   .addEventListener('click', function (event) {
     event.preventDefault();
-    document.querySelectorAll('#entryHolder div').forEach((element) => {
-      element.textContent = '';
-    });
+    document
+      .querySelectorAll('#entryHolder> div, section >div')
+      .forEach((element) => {
+        element.textContent = '';
+      });
     event.target.parentNode.parentNode.style.display = 'none';
 
     document.getElementById('city').value = '';
@@ -55,18 +57,32 @@ if (!localStorage.getItem('city')) {
   setData();
 }
 
+// function to store data in localStorage
 function populateStorage() {
   localStorage.setItem('city', document.getElementById('city').value);
   localStorage.setItem('startDate', document.getElementById('startDate').value);
   localStorage.setItem('endDate', document.getElementById('endDate').value);
+
+  document
+    .querySelectorAll('#entryHolder> div, section >div')
+    .forEach((element, index) => {
+      localStorage.setItem(`div${index}`, element.innerHTML);
+    });
 }
 
+// function to retrieve data from localStorage
 function setData() {
-  var currentCity = localStorage.getItem('city');
-  var currentStartDate = localStorage.getItem('startDate');
-  var currentEndDate = localStorage.getItem('endDate');
+  document.getElementById('city').value = localStorage.getItem('city');
+  document.getElementById('startDate').value = localStorage.getItem(
+    'startDate'
+  );
+  document.getElementById('endDate').value = localStorage.getItem('endDate');
 
-  document.getElementById('city').value = currentCity;
-  document.getElementById('startDate').value = currentStartDate;
-  document.getElementById('endDate').value = currentEndDate;
+  document
+    .querySelectorAll('#entryHolder> div, section >div')
+    .forEach((element, index) => {
+      element.innerHTML = localStorage.getItem(`div${index}`);
+    });
+
+  document.querySelector('.info').style.display = 'block';
 }

@@ -92,11 +92,13 @@ const updateUI = async () => {
     }
 
     if (allData.countDownDays <= 14) {
-      document.getElementById('weatherData').innerHTML = `Weather Data:
+      document.getElementById('weatherData').innerHTML = `<div>
+      <p>Weather Data:<p>
       <p>High Temp: ${allData.max_temp} <sup>o</sup>C</p>
       <p>Low Temp: ${allData.min_temp} <sup>o</sup>C</p>
       <p>Weather description: ${allData.weather_description}</p>
       <p>Weather date: ${allData.datetime}</p>
+      <div>
       <div><p>Weather icon:</p> <img src="https://www.weatherbit.io/static/img/icons/${allData.weatherIcon}.png" alt="Weather Icon"></div>
     `;
     } else {
