@@ -32,6 +32,7 @@ function performAction(e) {
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,
       startDate: startDate,
+      endDate: endDate,
     });
   });
 }

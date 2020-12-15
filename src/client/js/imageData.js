@@ -88,38 +88,39 @@ const updateUI = async () => {
   try {
     const allData = await request.json();
     document.getElementById('inputData').innerHTML = `
-    startDate: ${allData.startDate}
-    countryName: ${allData.countryName}
-    lat: ${allData.lat}
-    lng: ${allData.lng}
+    <p>Start Date: ${allData.startDate}</p>
+    <p>End Date: ${allData.endDate}</p>
+    <p>Country Name: ${allData.countryName}</p>
+    <p>Latitude: ${allData.lat}</p>
+    <p>Longitude: ${allData.lng}</p>
     `;
 
     document.getElementById(
       'lengthOfTrip'
-    ).innerHTML = `Length of trip: ${allData.lengthOfTrip} days`;
+    ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} days</p>`;
     if (allData.lengthOfTrip === 1) {
       document.getElementById(
         'lengthOfTrip'
-      ).innerHTML = `Length of trip: ${allData.lengthOfTrip} day`;
+      ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} day</p>`;
     }
 
     document.getElementById(
       'countdown'
-    ).innerHTML = `Countdown: ${allData.countDownDays} days`;
+    ).innerHTML = `<p>Countdown: ${allData.countDownDays} days</p>`;
     if (allData.countDownDays === 1) {
       document.getElementById(
         'countdown'
-      ).innerHTML = `Countdown: ${allData.countDownDays} day`;
+      ).innerHTML = `<p>Countdown: ${allData.countDownDays} day</p>`;
     } else if (allData.countDownDays < 0) {
-      document.getElementById('countdown').innerHTML = 'EXPIRED';
+      document.getElementById('countdown').innerHTML = '<p>EXPIRED</p>';
     }
 
     if (allData.countDownDays <= 14) {
       document.getElementById('weatherData').innerHTML = `Weather Data:
-    High Temp: ${allData.max_temp} <sup>o</sup>C
-    Low Temp: ${allData.min_temp} <sup>o</sup>C
-    Weather description: ${allData.weather_description}
-    Weather datetime: ${allData.datetime}
+      <p>High Temp: ${allData.max_temp} <sup>o</sup>C</p>
+      <p>Low Temp: ${allData.min_temp} <sup>o</sup>C</p>
+      <p>Weather description: ${allData.weather_description}</p>
+      <p>Weather datetime: ${allData.datetime}</p>
     `;
     } else {
       document.getElementById(

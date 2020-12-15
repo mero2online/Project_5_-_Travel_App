@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(#067cb3, #06969b, #067cb3);
+  background: #100e17;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -9,8 +9,10 @@ body {
   // grid-template-rows: 20px 1fr 1fr 2fr;
   grid-template-columns: 1fr;
   height: 100%;
-  background-image: linear-gradient(#067cb3, #06969b, #067cb3);
-  color: #f0d43a;
+  background: #1f1c28;
+  color: #a1a1af;
+  border: 1px solid #312d3c;
+  border-radius: 8px;
   justify-items: center;
   grid-gap: 1em;
   font-size: 20px;
@@ -19,6 +21,24 @@ body {
 
 .holder {
   height: fit-content;
+}
+
+.headline {
+  color: #0888bb;
+  h1 {
+    margin: 5px 0px;
+  }
+}
+
+.inputFields {
+  display: grid;
+  grid-gap: 5px;
+  justify-items: center;
+  background: #262330;
+  color: #a1a1af;
+  border: 1px solid #312d3c;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .start-end-date {
@@ -44,35 +64,17 @@ body {
 }
 
 .info {
-  background: #3b4a6b66;
+  background: #001628;
   min-width: 400px;
 }
 
 #entryHolder {
-  color: #ffa600;
+  color: #62b1d8;
 }
 
 #weatherData {
   overflow-wrap: break-word;
   word-wrap: break-word;
-}
-
-.images {
-  display: flex;
-  flex-direction: row;
-  div {
-    img {
-      width: 300px;
-      height: 200px;
-    }
-  }
-}
-
-#countryInfo {
-  img {
-    width: 135px;
-    height: 100px;
-  }
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
@@ -85,19 +87,21 @@ input {
   display: block;
   // height: 60px;
   // width: 320px;
-  background: #22b2da;
-  color: #f0d43a;
-  font-size: 20px;
+  background: #f5f3f4;
+  color: #000;
+  font-size: 18px;
   font-family: 'Roboto', sans-serif;
   border: none;
+  text-transform: uppercase;
+  padding: 5px;
 }
 
 button {
   display: block;
   // width: 300px;
   // height: 80px;
-  background-image: linear-gradient(#3b4a6b, #0975f0, #3b4a6b);
-  color: #f0d43a;
+  background-image: linear-gradient(to top left, #855edd, #63afd3);
+  color: #000;
   font-size: 26px;
   font-family: 'Roboto', sans-serif;
   border: none;
@@ -107,7 +111,9 @@ button {
 }
 
 button:hover {
-  background-image: linear-gradient(#0975f0, #3b4a6b, #0975f0);
+  background-image: linear-gradient(#855edd, #63afd3);
+  color: #fff;
+  transform: translateY(2px);
 }
 
 h1 {
@@ -116,11 +122,27 @@ h1 {
 
 #countryInfo {
   font-weight: bold;
-  tr,
-  td {
-    border: 1px solid black;
-    padding: 1rem;
-    margin: 1rem;
+  img {
+    width: 135px;
+    height: 100px;
+  }
+  table {
+    margin: auto;
+    tr,
+    td {
+      border: 1px solid #a1a1af;
+      padding: 1rem;
+      margin: 1rem;
+    }
+  }
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+  img {
+    width: 300px;
+    height: 200px;
   }
 }
 
@@ -133,18 +155,18 @@ button:focus {
 /* Style for Placeholder Text*/
 ::placeholder {
   /* Firefox, Chrome, Opera */
-  color: #f0d43a;
+  color: #000;
   font-family: 'Roboto', sans-serif;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #f0d43a;
+  color: #000;
   font-family: 'Roboto', sans-serif;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #f0d43a;
+  color: #000;
   font-family: 'Roboto', sans-serif;
 }

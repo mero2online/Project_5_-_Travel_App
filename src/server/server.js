@@ -74,6 +74,7 @@ function geonamesData(req, res) {
   projectData['lat'] = gData.lat;
   projectData['lng'] = gData.lng;
   projectData['startDate'] = gData.startDate;
+  projectData['endDate'] = gData.endDate;
 
   res.send(projectData);
 }
