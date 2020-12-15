@@ -1,12 +1,13 @@
 @media only screen and (min-width: 401px) and (max-width: 760px) {
   .start-end-date {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
     grid-template-areas:
       'sstartDate startDate'
       'eendDate endDate'
-      '. generate';
+      'printTrip generate';
   }
   .info {
     min-width: 400px;

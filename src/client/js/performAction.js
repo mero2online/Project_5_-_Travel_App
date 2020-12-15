@@ -17,15 +17,15 @@ function performAction(e) {
   getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
     console.log('getWebData', data);
 
-    let lat = data.geonames[0].lat;
-    let lon = data.geonames[0].lng;
-    Client.weatherData(lat, lon, countDownDays);
-
     let countryName = data.geonames[0].countryName;
 
     Client.countryInfo(countryName);
 
     Client.imageData(cityName, countryName);
+
+    let lat = data.geonames[0].lat;
+    let lon = data.geonames[0].lng;
+    Client.weatherData(lat, lon, countDownDays);
 
     postData('http://localhost:8081/geonamesData', {
       countryName: data.geonames[0].countryName,

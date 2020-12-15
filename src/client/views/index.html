@@ -16,7 +16,7 @@
     </div>
     <div class="holder inputFields">
       <div class="holder city">
-        <label for="city">My Trip to</label>
+        <label for="city">Trip destination</label>
         <input type="text" id="city" placeholder="enter city name here">
       </div>
       <div class="holder start-end-date">
@@ -24,20 +24,25 @@
         <input type="date" id="startDate" placeholder="MM/DD/YYYY">
         <label class="endDate" for="endDate">End date</label>
         <input type="date" id="endDate" placeholder="MM/DD/YYYY">
-        <button id="generate" type="submit"> save trip </button>
+        <button id="generate" type="submit"> Query for trip </button>
+        <button id="printTrip" onclick="window.print()">Print trip</button>
       </div>
     </div>
     <div class="holder info">
       <div class="title">Trip information</div>
+      <div class="save-remove-trip">
+        <button id="saveTrip" type="submit">Save trip</button>
+        <button id="removeTrip" type="submit">Remove trip</button>
+      </div>
       <div id="entryHolder">
         <div id="countdown"></div>
         <div id="lengthOfTrip"></div>
         <div id="weatherData"></div>
         <div id="inputData"></div>
-        <div class="images">
+        <section class="images">
           <div id="cityImage"></div>
           <div id="countryImage"></div>
-        </div>
+        </section>
         <div id="countryInfo"></div>
       </div>
     </div>

@@ -1,14 +1,20 @@
 @media only screen and (min-width: 761px) {
   .start-end-date {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
     grid-template-rows: 1fr;
     grid-gap: 10px;
     grid-template-areas:
       'sstartDate startDate eendDate endDate'
-      '. generate generate .';
+      '. generate generate printTrip';
   }
   .info {
     min-width: 700px;
+  }
+
+  .images {
+  figure{
+    margin: 10px;
+  }
   }
 }
