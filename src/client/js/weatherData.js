@@ -10,6 +10,7 @@ function weatherData(lat, lon, countDownDays) {
     .then(function (res) {
       console.log(res);
 
+      // weatherbit API free account provide weather forecast for 16 days only
       let max_temp, min_temp, weather_description, datetime, weatherIcon;
       if (countDownDays <= 14) {
         (max_temp = res.data[countDownDays + 1].max_temp),

@@ -4,23 +4,33 @@
       font-size: unset;
     }
   }
+
+  #entryHolder {
+    justify-content: center;
+    grid-template-columns: 290px;
+    grid-template-rows: 0fr 0fr 0fr 0fr 0fr 1fr;
+    grid-template-areas:
+      'inputData'
+      'countdown'
+      'lengthOfTrip'
+      'images'
+      'weatherData'
+      'countryInfo';
+  }
+
   .start-end-date {
     flex-direction: column;
     align-items: stretch;
-  }
-  .info {
-    min-width: unset;
-    max-width: 300px;
   }
 
   #countryInfo {
     font-weight: bold;
     img {
-      width: 100px;
+      width: 90%;
       height: 80px;
     }
     table {
-      font-size: 15px;
+      font-size: 14px;
       width: 100px;
       margin: auto;
       tr,

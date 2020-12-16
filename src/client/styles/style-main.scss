@@ -15,6 +15,7 @@ body {
   justify-items: center;
   grid-gap: 1em;
   font-size: 20px;
+  padding: 30px 0px;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -49,18 +50,23 @@ body {
 #generate {
   grid-area: generate;
 }
+
 #printTrip {
   grid-area: printTrip;
 }
+
 .startDate {
   grid-area: sstartDate;
 }
+
 #startDate {
   grid-area: startDate;
 }
+
 .endDate {
   grid-area: eendDate;
 }
+
 #endDate {
   grid-area: endDate;
 }
@@ -73,7 +79,9 @@ body {
 .info {
   display: none;
   background: #001628;
-  min-width: 400px;
+  // min-width: 400px;
+  border-radius: 20px;
+  width: 95%;
   > div > div,
   section {
     border-radius: 15px;
@@ -85,17 +93,41 @@ body {
 
 #entryHolder {
   color: #62b1d8;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0fr 0fr 0fr 0fr 1fr;
+  grid-template-areas:
+    'countdown countdown inputData inputData'
+    'lengthOfTrip lengthOfTrip inputData inputData'
+    'images images images images'
+    '. weatherData weatherData .'
+    'countryInfo countryInfo countryInfo countryInfo';
+}
+
+#inputData {
+  grid-area: inputData;
+  // text-align: center;
+}
+
+#countdown {
+  grid-area: countdown;
+}
+
+#lengthOfTrip {
+  grid-area: lengthOfTrip;
 }
 
 #weatherData {
+  grid-area: weatherData;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  text-align: center;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label {
   display: block;
-  font-size: 27px;
+  font-size: 25px;
 }
 
 input {
@@ -119,6 +151,7 @@ button {
   box-shadow: 2px 4px 5px #444;
   cursor: pointer;
   padding: 10px 20px;
+  border-radius: 5px;
 }
 
 button:hover {
@@ -132,6 +165,7 @@ h1 {
 }
 
 #countryInfo {
+  grid-area: countryInfo;
   font-weight: bold;
   img {
     width: 135px;
@@ -149,22 +183,26 @@ h1 {
 }
 
 .images {
-  display: flex;
-  flex-direction: row;
+  grid-area: images;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  justify-content: center;
   img {
     border-radius: 20px;
     border: 1px solid;
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 380px;
   }
 }
 
 .save-remove-trip {
   display: flex;
   justify-content: space-around;
+  margin: 0px 0px 20px;
 }
 
-h3{
+h3 {
   color: #c32b53;
 }
 /* Reset style for HTML element on active to have no border*/

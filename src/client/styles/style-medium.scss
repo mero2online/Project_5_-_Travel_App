@@ -9,15 +9,29 @@
       'eendDate endDate'
       'printTrip generate';
   }
-  .info {
-    min-width: 300px;
-    max-width: 400px;
+
+  #entryHolder {
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0fr 0fr 0fr 0fr 0fr 1fr;
+    grid-template-areas:
+      'inputData'
+      'countdown'
+      'lengthOfTrip'
+      'images'
+      'weatherData '
+      'countryInfo';
   }
 
   .images {
     display: flex;
     flex-direction: column;
+    img {
+      width: 100%;
+      height: 320px;
+    }
   }
+
   #countryInfo {
     table {
       font-size: 17px;
@@ -25,6 +39,7 @@
       margin: auto;
     }
   }
+  
   .start-end-date {
     button {
       font-size: unset;
