@@ -3,16 +3,16 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 // Import the js file to test
-import { performAction } from '../src/client/js/performAction';
+import { imageData } from '../src/client/js/imageData';
 
 describe('Testing the submit functionality', () => {
-  test('Testing the performAction() function', () => {
-    expect(performAction).toBeDefined();
+  test('Testing the imageData() function', () => {
+    expect(imageData).toBeDefined();
   });
 });
 
-describe('Testing the typeof performAction() to be a function', () => {
+describe('Testing the typeof imageData() to be a function', () => {
   test('It should be a function', () => {
-    expect(typeof performAction).toBe('function');
+    expect(typeof imageData).toBe('function');
   });
 });
