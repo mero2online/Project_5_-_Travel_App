@@ -68,6 +68,16 @@ dotenv
 4. REST Countries API
    - Get information about countries via a RESTful API.
 
+#### Project Extended
+This options implemented to the project to extend it
+1. Add end date and display length of trip.
+2. Pull in an image for the country from Pixabay API when the entered location brings up no results.
+3. Integrate the REST Countries API to pull in data for the country being visited.
+4. Allow the user to remove the trip.
+5. Use Local Storage to save the data so that when they close, then revisit the page, their information is still there.
+6. Incorporate icons into forecast.
+7. Allow user to Print their trip.
+
 ---
 
 ### License
