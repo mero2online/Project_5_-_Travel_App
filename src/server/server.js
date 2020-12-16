@@ -76,17 +76,8 @@ function geonamesData(req, res) {
   projectData['startDate'] = gData.startDate;
   projectData['endDate'] = gData.endDate;
   projectData['cityName'] = gData.cityName;
-
-  res.send(projectData);
-}
-
-// POST Route countdown Data
-app.post('/countDownD', countDownD);
-
-function countDownD(req, res) {
-  let cData = req.body;
-  projectData['countDownDays'] = cData.countDownDays;
-  projectData['lengthOfTrip'] = cData.lengthOfTrip;
+  projectData['countDownDays'] = gData.countDownDays;
+  projectData['lengthOfTrip'] = gData.lengthOfTrip;
 
   res.send(projectData);
 }
