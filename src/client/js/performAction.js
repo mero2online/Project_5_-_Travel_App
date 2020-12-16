@@ -11,9 +11,9 @@ function performAction(e) {
   // Base URL for GeoNames API
   let geonamesBaseURL = `http://api.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
 
-  // Execute countDown function to calculate countdown days to trip and calculate length of trip
-  Client.countDown(startDate, endDate);
-  let countDownDays = Client.countDown(startDate, endDate);
+  // Use countDown function to calculate countdown days to trip and calculate length of trip
+  let countDownDays = Client.countDown(startDate, endDate)[0],
+    lengthOfTrip = Client.countDown(startDate, endDate)[1];
 
   // fetch geonamesAPI to got Country name, Latitude, Longitude
   getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
@@ -41,6 +41,8 @@ function performAction(e) {
       startDate: new Date(startDate).toLocaleDateString(),
       endDate: new Date(endDate).toLocaleDateString(),
       cityName: cityName,
+      countDownDays: countDownDays,
+      lengthOfTrip: lengthOfTrip,
     });
     // after all Update UI
     setTimeout(function () {
@@ -54,7 +56,6 @@ const getWebData = async (geonamesBaseURL, geonamesAPIkey) => {
   const res = await fetch(geonamesBaseURL + geonamesAPIkey);
   try {
     const data = await res.json();
-    console.log('getWebData', data);
     return data;
   } catch (error) {
     console.log('error', error);
