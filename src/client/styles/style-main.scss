@@ -205,6 +205,17 @@ h1 {
 h3 {
   color: #c32b53;
 }
+
+.page-footer {
+  text-align: right;
+  font-size: 1rem;
+  color: #fff;
+  margin: 40px;
+  span {
+    color: #f00;
+  }
+}
+
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
