@@ -94,6 +94,7 @@ function weatherData(req, res) {
   projectData['weatherIcon'] = wData.weatherIcon;
 
   res.send(projectData);
+  console.log('post projectData', projectData);
 }
 
 // POST Route pixabay API Data
@@ -107,10 +108,9 @@ function imageData(req, res) {
   projectData['countryWebformatURL'] = iData.countryWebformatURL;
 
   res.send(projectData);
-  console.log('post projectData', projectData);
 }
 
-// POST Route countdown Data
+// POST Route countryInfo Data
 app.post('/countryInfo', countryInfo);
 
 function countryInfo(req, res) {
