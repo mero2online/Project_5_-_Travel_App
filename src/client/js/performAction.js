@@ -40,6 +40,7 @@ function performAction(e) {
       lng: data.geonames[0].lng,
       startDate: new Date(startDate).toLocaleDateString(),
       endDate: new Date(endDate).toLocaleDateString(),
+      cityName: cityName,
     });
   });
 }

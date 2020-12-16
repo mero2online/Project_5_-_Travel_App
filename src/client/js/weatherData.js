@@ -67,7 +67,7 @@ const updateUI = async () => {
     document.getElementById('inputData').innerHTML = `
     <p>Start Date: ${allData.startDate}</p>
     <p>End Date: ${allData.endDate}</p>
-    <p>Country Name: ${allData.countryName}</p>
+    <p>Destination: ${allData.cityName}, ${allData.countryName}</p>
     `;
 
     document.getElementById(
@@ -81,11 +81,11 @@ const updateUI = async () => {
 
     document.getElementById(
       'countdown'
-    ).innerHTML = `<p>Countdown: ${allData.countDownDays} days</p>`;
+    ).innerHTML = `<p>Countdown: ${allData.countDownDays} days away</p>`;
     if (allData.countDownDays === 1) {
       document.getElementById(
         'countdown'
-      ).innerHTML = `<p>Countdown: ${allData.countDownDays} day</p>`;
+      ).innerHTML = `<p>Countdown: ${allData.countDownDays} day away</p>`;
     } else if (allData.countDownDays < 0) {
       document.getElementById('countdown').innerHTML = '<p>EXPIRED</p>';
     }
