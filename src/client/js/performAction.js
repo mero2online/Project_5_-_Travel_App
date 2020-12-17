@@ -100,61 +100,60 @@ const updateUI = async () => {
     `;
 
     /* For length Of Trip */
-    document.getElementById(
-      'lengthOfTrip'
-    ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} days</p>`;
-    if (allData.lengthOfTrip === 1) {
-      document.getElementById(
-        'lengthOfTrip'
-      ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} day</p>`;
-    }
+    let lengthOfTripDiv = document.getElementById('lengthOfTrip');
+
+    // Ternary Operator
+    allData.lengthOfTrip === 1
+      ? (lengthOfTripDiv.innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} day</p>`)
+      : allData.lengthOfTrip < 0
+      ? (lengthOfTripDiv.innerHTML = '<p>EXPIRED</p>')
+      : (lengthOfTripDiv.innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} days</p>`);
 
     /* For countdown day/days */
-    document.getElementById(
-      'countdown'
-    ).innerHTML = `<p>Countdown: ${allData.countDownDays} days away</p>`;
-    if (allData.countDownDays === 1) {
-      document.getElementById(
-        'countdown'
-      ).innerHTML = `<p>Countdown: ${allData.countDownDays} day away</p>`;
-    } else if (allData.countDownDays < 0) {
-      document.getElementById('countdown').innerHTML = '<p>EXPIRED</p>';
-    }
+    let countdownDiv = document.getElementById('countdown');
+
+    // Ternary Operator
+    allData.countDownDays === 1
+      ? (countdownDiv.innerHTML = `<p>Countdown: ${allData.countDownDays} day away</p>`)
+      : allData.countDownDays < 0
+      ? (countdownDiv.innerHTML = '<p>EXPIRED</p>')
+      : (countdownDiv.innerHTML = `<p>Countdown: ${allData.countDownDays} days away</p>`);
 
     /* For Weather forecasts data */
+    let weatherDataDiv = document.getElementById('weatherData');
+
     // Ternary Operator
     allData.countDownDays <= 14
-      ? (document.getElementById('weatherData').innerHTML = `<div>
+      ? (weatherDataDiv.innerHTML = `
+      <div>
       <h3>Weather forecasts</h3>
       <p>Weather date: ${allData.datetime}</p>
       <p>High Temp: ${allData.max_temp} <sup>o</sup>C</p>
       <p>Low Temp: ${allData.min_temp} <sup>o</sup>C</p>
       <p>Weather description: ${allData.weather_description}</p>
       <div>
-      <div><p>Weather icon:</p> <img src="https://www.weatherbit.io/static/img/icons/${allData.weatherIcon}.png" alt="Weather Icon"></div>
-    `)
-      : (document.getElementById(
-          'weatherData'
-        ).innerHTML = `Weather Data: No data available for this date`);
+      <div><p>Weather icon:</p> <img src="https://www.weatherbit.io/static/img/icons/${allData.weatherIcon}.png" alt="Weather Icon">
+      </div>`)
+      : (weatherDataDiv.innerHTML = `Weather Data: No data available for this date`);
 
     /* For City and Country photos */
+    let cityImageDiv = document.getElementById('cityImage');
     // Ternary Operator for City
     allData.cityTotalHits > 0
-      ? (document.getElementById('cityImage').innerHTML = `<figure>
+      ? (cityImageDiv.innerHTML = `<figure>
       <figcaption> City Photo </figcaption>
       <img src="${allData.cityWebformatURL}" alt="City Photo">
       </figure>`)
-      : (document.getElementById('cityImage').innerHTML =
-          'No Photo available for this city');
+      : (cityImageDiv.innerHTML = 'No Photo available for this city');
 
+    let countryImageDiv = document.getElementById('countryImage');
     // Ternary Operator for Country
     allData.countryTotalHits > 0
-      ? (document.getElementById('countryImage').innerHTML = `<figure>
+      ? (countryImageDiv.innerHTML = `<figure>
       <figcaption> Country Photo </figcaption>
       <img src="${allData.countryWebformatURL}" alt="Country Photo">
       </figure>`)
-      : (document.getElementById('countryImage').innerHTML =
-          'No Photo available for this country');
+      : (countryImageDiv.innerHTML = 'No Photo available for this country');
 
     /* For country informations */
     document.getElementById('countryInfo').innerHTML = `
