@@ -12,16 +12,18 @@ function weatherData(lat, lon, countDownDays) {
 
       // weatherbit API free account provide weather forecast for 16 days only
       let max_temp, min_temp, weather_description, datetime, weatherIcon;
-      if (countDownDays <= 14) {
-        (max_temp = res.data[countDownDays + 1].max_temp),
+      countDownDays <= 14 // Ternary Operator
+        ? ((max_temp = res.data[countDownDays + 1].max_temp),
           (min_temp = res.data[countDownDays + 1].min_temp),
           (weather_description =
             res.data[countDownDays + 1].weather.description),
           (datetime = res.data[countDownDays + 1].datetime),
-          (weatherIcon = res.data[countDownDays + 1].weather.icon);
-      } else {
-        max_temp, min_temp, weather_description, datetime, (weatherIcon = 0);
-      }
+          (weatherIcon = res.data[countDownDays + 1].weather.icon))
+        : max_temp,
+        min_temp,
+        weather_description,
+        datetime,
+        (weatherIcon = 0);
 
       postWeatherData('http://localhost:8081/weatherData', {
         max_temp: max_temp,
