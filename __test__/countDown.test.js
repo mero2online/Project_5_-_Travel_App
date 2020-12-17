@@ -9,12 +9,14 @@ describe('Testing the countDown functionality', () => {
 
 describe('Testing the countDown values', () => {
   test('Testing the countDown() function', () => {
-    let startDate = new Date();
-    startDate.setDate(startDate.getDate() + 2);
+    let startDate = new Date(new Date().setDate(new Date().getDate() + 2))
+      .toISOString()
+      .split('T')[0];
 
-    let endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
+    let endDate = new Date(new Date().setDate(new Date().getDate() + 7))
+      .toISOString()
+      .split('T')[0];
 
-    expect(countDown(startDate, endDate)).toStrictEqual([2, 5]);
+    expect(countDown(startDate, endDate)).toStrictEqual([1, 5]);
   });
 });
