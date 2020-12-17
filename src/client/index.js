@@ -51,11 +51,9 @@ document.getElementById('saveTrip').addEventListener('click', function (event) {
 Use Local Storage to save the data so that when they close, 
 then revisit the page, their information is still there.
 */
-if (!localStorage.getItem('city')) {
-  populateStorage();
-} else {
-  setData();
-}
+
+// Check if data populated or not to set it back
+!localStorage.getItem('city') ? populateStorage() : setData(); // Ternary Operator
 
 // function to store data in localStorage
 function populateStorage() {

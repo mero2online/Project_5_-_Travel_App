@@ -92,14 +92,14 @@ const updateUI = async () => {
 
     const allData = await request.json();
 
-    // For input data
+    /* For input data */
     document.getElementById('inputData').innerHTML = `
     <p>Start Date: ${allData.startDate}</p>
     <p>End Date: ${allData.endDate}</p>
     <p>Destination: ${allData.cityName}, ${allData.countryName}</p>
     `;
 
-    // For length Of Trip
+    /* For length Of Trip */
     document.getElementById(
       'lengthOfTrip'
     ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} days</p>`;
@@ -109,7 +109,7 @@ const updateUI = async () => {
       ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} day</p>`;
     }
 
-    // For countdown day/days
+    /* For countdown day/days */
     document.getElementById(
       'countdown'
     ).innerHTML = `<p>Countdown: ${allData.countDownDays} days away</p>`;
@@ -121,9 +121,10 @@ const updateUI = async () => {
       document.getElementById('countdown').innerHTML = '<p>EXPIRED</p>';
     }
 
-    // For Weather forecasts data
-    if (allData.countDownDays <= 14) {
-      document.getElementById('weatherData').innerHTML = `<div>
+    /* For Weather forecasts data */
+    // Ternary Operator
+    allData.countDownDays <= 14
+      ? (document.getElementById('weatherData').innerHTML = `<div>
       <h3>Weather forecasts</h3>
       <p>Weather date: ${allData.datetime}</p>
       <p>High Temp: ${allData.max_temp} <sup>o</sup>C</p>
@@ -131,35 +132,31 @@ const updateUI = async () => {
       <p>Weather description: ${allData.weather_description}</p>
       <div>
       <div><p>Weather icon:</p> <img src="https://www.weatherbit.io/static/img/icons/${allData.weatherIcon}.png" alt="Weather Icon"></div>
-    `;
-    } else {
-      document.getElementById(
-        'weatherData'
-      ).innerHTML = `Weather Data: No data available for this date`;
-    }
+    `)
+      : (document.getElementById(
+          'weatherData'
+        ).innerHTML = `Weather Data: No data available for this date`);
 
-    // For City and Country photos
-    if (allData.cityTotalHits > 0) {
-      document.getElementById('cityImage').innerHTML = `<figure>
+    /* For City and Country photos */
+    // Ternary Operator for City
+    allData.cityTotalHits > 0
+      ? (document.getElementById('cityImage').innerHTML = `<figure>
       <figcaption> City Photo </figcaption>
       <img src="${allData.cityWebformatURL}" alt="City Photo">
-      </figure>`;
-    } else {
-      document.getElementById('cityImage').innerHTML =
-        'No Photo available for this city';
-    }
+      </figure>`)
+      : (document.getElementById('cityImage').innerHTML =
+          'No Photo available for this city');
 
-    if (allData.countryTotalHits > 0) {
-      document.getElementById('countryImage').innerHTML = `<figure>
+    // Ternary Operator for Country
+    allData.countryTotalHits > 0
+      ? (document.getElementById('countryImage').innerHTML = `<figure>
       <figcaption> Country Photo </figcaption>
       <img src="${allData.countryWebformatURL}" alt="Country Photo">
-      </figure>`;
-    } else {
-      document.getElementById('countryImage').innerHTML =
-        'No Photo available for this country';
-    }
+      </figure>`)
+      : (document.getElementById('countryImage').innerHTML =
+          'No Photo available for this country');
 
-    // For country informations
+    /* For country informations */
     document.getElementById('countryInfo').innerHTML = `
     <h3>Country Informations</h3>
     <table>
