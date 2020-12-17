@@ -94,7 +94,6 @@ function weatherData(req, res) {
   projectData['weatherIcon'] = wData.weatherIcon;
 
   res.send(projectData);
-  console.log('post projectData', projectData);
 }
 
 // POST Route pixabay API Data

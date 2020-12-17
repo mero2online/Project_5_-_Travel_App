@@ -17,7 +17,6 @@ function performAction(e) {
 
   // fetch geonamesAPI to got Country name, Latitude, Longitude
   getWebData(geonamesBaseURL, geonamesAPIkey).then(function (data) {
-    console.log('getWebData', data);
 
     let countryName = data.geonames[0].countryName;
 
@@ -65,7 +64,6 @@ const getWebData = async (geonamesBaseURL, geonamesAPIkey) => {
 
 /* Function to POST data */
 const postData = async (url = '', data = {}) => {
-  console.log('postData', data);
   const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
@@ -173,7 +171,6 @@ const updateUI = async () => {
     </table>
     `;
 
-    console.log('allData', allData);
   } catch (error) {
     console.log('error', error);
   }

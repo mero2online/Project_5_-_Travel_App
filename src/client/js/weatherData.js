@@ -8,7 +8,6 @@ function weatherData(lat, lon, countDownDays) {
   fetch(weatherbitBaseURL)
     .then((res) => res.json())
     .then(function (res) {
-      console.log(res);
 
       // weatherbit API free account provide weather forecast for 16 days only
       let max_temp, min_temp, weather_description, datetime, weatherIcon;
@@ -38,7 +37,6 @@ function weatherData(lat, lon, countDownDays) {
 
 /* Function to POST data */
 const postWeatherData = async (url = '', data = {}) => {
-  console.log('postWeatherData', data);
   const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',

@@ -10,8 +10,6 @@ function imageData(cityName, countryName) {
     fetch(pixabayBaseURLcity).then((res) => res.json()),
     fetch(pixabayBaseURLcountry).then((res) => res.json()),
   ]).then(function (res) {
-    console.log('city', res[0]);
-    console.log('country', res[1]);
 
     let cityTotalHits = res[0].totalHits;
     let countryTotalHits = res[1].totalHits;
@@ -29,9 +27,6 @@ function imageData(cityName, countryName) {
       ? (countryWebformatURL = res[1].hits[0].webformatURL)
       : (countryWebformatURL = 0);
 
-    console.log('cityWebformatURL', cityWebformatURL);
-    console.log('countryWebformatURL', countryWebformatURL);
-
     // POST image data to server
     postImageData('http://localhost:8081/imageData', {
       cityTotalHits: cityTotalHits,
@@ -44,7 +39,6 @@ function imageData(cityName, countryName) {
 
 /* Function to POST data */
 const postImageData = async (url = '', data = {}) => {
-  console.log('postImageData', data);
   const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',

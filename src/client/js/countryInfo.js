@@ -6,7 +6,6 @@ function countryInfo(countryName) {
   fetch(RESTCountriesBaseURL)
     .then((res) => res.json())
     .then(function (res) {
-      console.log(res);
 
       // POST Country information to server
       postCountryInfoData('http://localhost:8081/countryInfo', {
@@ -27,7 +26,6 @@ function countryInfo(countryName) {
 
 /* Function to POST data */
 const postCountryInfoData = async (url = '', data = {}) => {
-  console.log('postCountryInfoData', data);
   const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
