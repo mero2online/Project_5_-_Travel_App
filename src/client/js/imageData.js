@@ -5,6 +5,7 @@ function imageData(cityName, countryName) {
   let pixabayBaseURLcity = `https://pixabay.com/api/?key=${pixabayAPIkey}&q=${cityName}+travel&image_type=photo&pretty=true&safesearch=true`;
   let pixabayBaseURLcountry = `https://pixabay.com/api/?key=${pixabayAPIkey}&q=${countryName}+city&image_type=photo&pretty=true&safesearch=true`;
 
+  // fetch city and country images from pixabay API
   Promise.all([
     fetch(pixabayBaseURLcity).then((res) => res.json()),
     fetch(pixabayBaseURLcountry).then((res) => res.json()),
@@ -31,6 +32,7 @@ function imageData(cityName, countryName) {
     console.log('cityWebformatURL', cityWebformatURL);
     console.log('countryWebformatURL', countryWebformatURL);
 
+    // POST image data to server
     postImageData('http://localhost:8081/imageData', {
       cityTotalHits: cityTotalHits,
       cityWebformatURL: cityWebformatURL,

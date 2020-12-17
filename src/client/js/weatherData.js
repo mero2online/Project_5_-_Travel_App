@@ -25,6 +25,7 @@ function weatherData(lat, lon, countDownDays) {
           datetime,
           (weatherIcon = 0));
 
+      // POST Weather Data to server
       postWeatherData('http://localhost:8081/weatherData', {
         max_temp: max_temp,
         min_temp: min_temp,
