@@ -82,6 +82,9 @@ This options implemented to the project to extend it
 6. Incorporate icons into forecast.
 7. Allow user to Print their trip.
 
+#### Service Workers
+The project have service workers installed.
+
 #### Test issue fixed
 
 While testing functions the async function showing this error
