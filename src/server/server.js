@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+let projectData = {};
 
 var path = require('path');
 
@@ -128,3 +128,10 @@ function countryInfo(req, res) {
 
   res.send(projectData);
 }
+
+// POST Route for testing the server
+app.post('/test', async (req, res) => {
+  res.send(req.body);
+});
+
+module.exports = app;
