@@ -31,6 +31,8 @@ body-parser
 cors
 webpack
 webpack-cli
+core-js
+regenerator-runtime
 ```
 
 #### 2. Wepback Dependencies
@@ -97,6 +99,21 @@ then add this to the top of your test file
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 ```
+## To run project Locally
+- [ ] Create a new ```.env``` file in the root of project
+- [ ] Fill the .env file with your API keys like this:
+```
+GEONAMES_API_KEY=**************************
+WEATHERBIT_API_KEY=*******************************
+PIXABAY_API_KEY=********-********************************
+```
+- [ ] Start run the project
+```
+npm run buildstart
+```
+## Deployment
+I have deploy this project to be live on [Netlify](https://www.netlify.com/)
+To access it live [Click Here](https://travel-app-mohamed-omar.netlify.app/)
 
 ---
 
