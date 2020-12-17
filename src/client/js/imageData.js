@@ -3,7 +3,7 @@ function imageData(cityName, countryName) {
   let pixabayAPIkey = process.env.PIXABAY_API_KEY;
   // Base URL for pixabay API
   let pixabayBaseURLcity = `https://pixabay.com/api/?key=${pixabayAPIkey}&q=${cityName}+travel&image_type=photo&pretty=true&safesearch=true`;
-  let pixabayBaseURLcountry = `https://pixabay.com/api/?key=${pixabayAPIkey}&q=${countryName}+street&image_type=photo&pretty=true&safesearch=true`;
+  let pixabayBaseURLcountry = `https://pixabay.com/api/?key=${pixabayAPIkey}&q=${countryName}+city&image_type=photo&pretty=true&safesearch=true`;
 
   Promise.all([
     fetch(pixabayBaseURLcity).then((res) => res.json()),
