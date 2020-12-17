@@ -91,12 +91,15 @@ const updateUI = async () => {
     document.querySelector('.info').style.display = 'block';
 
     const allData = await request.json();
+
+    // For input data
     document.getElementById('inputData').innerHTML = `
     <p>Start Date: ${allData.startDate}</p>
     <p>End Date: ${allData.endDate}</p>
     <p>Destination: ${allData.cityName}, ${allData.countryName}</p>
     `;
 
+    // For length Of Trip
     document.getElementById(
       'lengthOfTrip'
     ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} days</p>`;
@@ -106,6 +109,7 @@ const updateUI = async () => {
       ).innerHTML = `<p>Length of trip: ${allData.lengthOfTrip} day</p>`;
     }
 
+    // For countdown day/days
     document.getElementById(
       'countdown'
     ).innerHTML = `<p>Countdown: ${allData.countDownDays} days away</p>`;
@@ -117,6 +121,7 @@ const updateUI = async () => {
       document.getElementById('countdown').innerHTML = '<p>EXPIRED</p>';
     }
 
+    // For Weather forecasts data
     if (allData.countDownDays <= 14) {
       document.getElementById('weatherData').innerHTML = `<div>
       <h3>Weather forecasts</h3>
@@ -133,6 +138,7 @@ const updateUI = async () => {
       ).innerHTML = `Weather Data: No data available for this date`;
     }
 
+    // For City and Country photos
     if (allData.cityTotalHits > 0) {
       document.getElementById('cityImage').innerHTML = `<figure>
       <figcaption> City Photo </figcaption>
@@ -153,19 +159,20 @@ const updateUI = async () => {
         'No Photo available for this country';
     }
 
+    // For country informations
     document.getElementById('countryInfo').innerHTML = `
-    <h3>Country Info</h3>
+    <h3>Country Informations</h3>
     <table>
-    <tr><td>Alpha3Code:</td> <td>${allData.alpha3Code}</td></tr>
+    <tr><td>Alpha 3Code:</td> <td>${allData.alpha3Code}</td></tr>
     <tr><td>Capital:</td> <td>${allData.capital}</td></tr>
     <tr><td>Region:</td> <td>${allData.region}</td></tr>
     <tr><td>Demonym:</td> <td>${allData.demonym}</td></tr>
     <tr><td>Timezones:</td> <td>${allData.timezones}</td></tr>
-    <tr><td>NativeName:</td> <td>${allData.nativeName}</td></tr>
-    <tr><td>CurrenciesCode:</td> <td>${allData.currenciesCode}</td></tr>
-    <tr><td>CurrenciesName:</td> <td>${allData.currenciesName}</td></tr>
-    <tr><td>CurrenciesSymbol:</td> <td>${allData.currenciesSymbol}</td></tr>
-    <tr><td>LanguagesName:</td> <td>${allData.languagesName}</td></tr>
+    <tr><td>Native Name:</td> <td>${allData.nativeName}</td></tr>
+    <tr><td>Currencies Code:</td> <td>${allData.currenciesCode}</td></tr>
+    <tr><td>Currencies Name:</td> <td>${allData.currenciesName}</td></tr>
+    <tr><td>Currencies Symbol:</td> <td>${allData.currenciesSymbol}</td></tr>
+    <tr><td>Languages Name:</td> <td>${allData.languagesName}</td></tr>
     <tr><td>Flag:</td> <td><img src="${allData.flag}" alt="City Photo"></td></tr>
     </table>
     `;
