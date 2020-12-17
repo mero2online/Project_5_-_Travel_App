@@ -163,7 +163,7 @@ const updateUI = async () => {
     <tr><td>Capital:</td> <td>${allData.capital}</td></tr>
     <tr><td>Region:</td> <td>${allData.region}</td></tr>
     <tr><td>Demonym:</td> <td>${allData.demonym}</td></tr>
-    <tr><td>Timezones:</td> <td>${allData.timezones}</td></tr>
+    <tr><td>Timezones:</td> <td>${allData.timezones.toString().split(',').join(",<br/>")}</td></tr>
     <tr><td>Native Name:</td> <td>${allData.nativeName}</td></tr>
     <tr><td>Currencies Code:</td> <td>${allData.currenciesCode}</td></tr>
     <tr><td>Currencies Name:</td> <td>${allData.currenciesName}</td></tr>
