@@ -18,16 +18,16 @@ function imageData(cityName, countryName) {
     let cityWebformatURL;
     let countryWebformatURL;
 
-    if (cityTotalHits > 0) {
-      cityWebformatURL = res[0].hits[0].webformatURL;
-    } else {
-      cityWebformatURL = 0;
-    }
-    if (countryTotalHits > 0) {
-      countryWebformatURL = res[1].hits[0].webformatURL;
-    } else {
-      countryWebformatURL = 0;
-    }
+    // Check images available for input city
+    cityTotalHits > 0 // Ternary Operator
+      ? (cityWebformatURL = res[0].hits[0].webformatURL)
+      : (cityWebformatURL = 0);
+
+    // Check images available for input country
+    countryTotalHits > 0 // Ternary Operator
+      ? (countryWebformatURL = res[1].hits[0].webformatURL)
+      : (countryWebformatURL = 0);
+
     console.log('cityWebformatURL', cityWebformatURL);
     console.log('countryWebformatURL', countryWebformatURL);
 
