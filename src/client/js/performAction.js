@@ -9,7 +9,7 @@ function performAction(e) {
   // Personal API Key for GeoNames API
   const geonamesAPIkey = process.env.GEONAMES_API_KEY;
   // Base URL for GeoNames API
-  let geonamesBaseURL = `https://api.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
+  let geonamesBaseURL = `https://secure.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
 
   // Use countDown function to calculate countdown days to trip and calculate length of trip
   let countDownDays = Client.countDown(startDate, endDate)[0],
