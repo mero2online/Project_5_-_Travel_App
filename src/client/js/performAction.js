@@ -33,7 +33,7 @@ function performAction(e) {
     Client.weatherData(lat, lon, countDownDays);
 
     // POST geonames API Data, start and end date to server
-    postData('http://localhost:8081/geonamesData', {
+    postData('/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,
@@ -84,7 +84,7 @@ const postData = async (url = '', data = {}) => {
 
 /* Function to GET Project Data */
 const updateUI = async () => {
-  const request = await fetch('http://localhost:8081/all');
+  const request = await fetch('/all');
   try {
     document.querySelector('.info').style.display = 'block';
 

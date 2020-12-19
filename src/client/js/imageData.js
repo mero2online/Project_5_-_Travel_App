@@ -28,7 +28,7 @@ function imageData(cityName, countryName) {
       : (countryWebformatURL = 0);
 
     // POST image data to server
-    postImageData('http://localhost:8081/imageData', {
+    postImageData('/imageData', {
       cityTotalHits: cityTotalHits,
       cityWebformatURL: cityWebformatURL,
       countryTotalHits: countryTotalHits,
