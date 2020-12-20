@@ -10,6 +10,7 @@
     "buildstart": "npm run build-prod && npm start",
     "build": "npm run build-prod"
   },
+  "proxy": "http://localhost:8081",
   "keywords": [],
   "author": "",
   "license": "ISC",
