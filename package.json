@@ -11,6 +11,7 @@
     "build": "npm run build-prod"
   },
   "proxy": "http://localhost:8081",
+  "homepage": "/",
   "keywords": [],
   "author": "",
   "license": "ISC",
