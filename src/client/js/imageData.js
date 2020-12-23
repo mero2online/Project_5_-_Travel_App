@@ -1,6 +1,6 @@
 function imageData(cityName, countryName) {
   // Personal API Key for PixaBay API
-  let pixabayAPIkey = '19500852-4a57ebc5b443428d25ca29bf5';
+  let pixabayAPIkey = process.env.PIXABAY_API_KEY;
   // Base URL for pixabay API
   let pixabayBaseURLcity = `https://pixabay.com/api/?key=${pixabayAPIkey}&q=${cityName}+travel&image_type=photo&pretty=true&safesearch=true`;
   let pixabayBaseURLcountry = `https://pixabay.com/api/?key=${pixabayAPIkey}&q=${countryName}+city&image_type=photo&pretty=true&safesearch=true`;

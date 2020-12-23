@@ -7,7 +7,7 @@ function performAction(e) {
   const cityName = document.getElementById('city').value;
 
   // Personal API Key for GeoNames API
-  const geonamesAPIkey = 'mohamedomar';
+  const geonamesAPIkey = process.env.GEONAMES_API_KEY;
   // Base URL for GeoNames API
   let geonamesBaseURL = `https://secure.geonames.org/searchJSON?name_equals=${cityName}&lang=en&username=`;
 
