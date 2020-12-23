@@ -14,8 +14,6 @@ module.exports = {
       template: './src/client/views/index.html',
       filename: './index.html',
     }),
-    new Dotenv({
-      path: './.env', // load this now instead of the ones in '.env'
-    }),
+    new Dotenv(),
   ],
 };

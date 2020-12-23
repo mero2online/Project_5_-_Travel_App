@@ -36,16 +36,16 @@ const weatherbitAPIkey = process.env.WEATHERBIT_API_KEY;
 const pixabayAPIkey = process.env.PIXABAY_API_KEY;
 
 // Initialize the main project folder
-app.use(express.static('dist'));
+app.use(express.static(__dirname + '/dist'));
 
 console.log(__dirname);
 
-app.get('/', function (req, res) {
-  res.sendFile('dist/index.html');
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 // Setup Server
-const port = 8081;
+const port = process.env.PORT || 8081;
 const server = app.listen(port, listening);
 
 function listening() {
