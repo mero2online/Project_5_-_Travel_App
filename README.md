@@ -115,6 +115,10 @@ PIXABAY_API_KEY=********-********************************
 npm run buildstart
 ```
 ## Deployment
+1. Heroku
+I have deploy this project to be live on [Heroku](https://www.heroku.com/)
+To access it live [Click Here](https://travel-app-mero.herokuapp.com/)
+2. Netlify
 I have deploy this project to be live on [Netlify](https://www.netlify.com/)
 To access it live [Click Here](https://travel-app-mohamed-omar.netlify.app/)
 
