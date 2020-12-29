@@ -33,7 +33,7 @@ function performAction(e) {
     Client.weatherData(lat, lon, countDownDays);
 
     // POST geonames API Data, start and end date to server
-    postData('http://localhost:8081/geonamesData', {
+    postData('/.netlify/functions/allData/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,
@@ -84,12 +84,12 @@ const postData = async (url = '', data = {}) => {
 
 /* Function to GET Project Data */
 const updateUI = async () => {
-  const request = await fetch('http://localhost:8081/all');
+  const request = await fetch('/.netlify/functions/allData');
   try {
     document.querySelector('.info').style.display = 'block';
 
     const allData = await request.json();
-
+    console.log('all project Data', allData);
     /* For input data */
     document.getElementById('inputData').innerHTML = `
     <p>Start Date: ${allData.startDate}</p>
