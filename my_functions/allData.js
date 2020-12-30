@@ -1,67 +1,11 @@
-// Setup empty JS object to act as endpoint for all routes
 let projectData = {};
 
-var path = require('path');
+exports.handler = async function (event, context) {
+  const body = JSON.parse(event.body);
+  console.log('body', body);
 
-// Require Express to run server and routes
-const express = require('express');
-
-const mockAPIResponse = require('./mockAPI.js');
-
-// Start up an instance of app
-const app = express();
-
-/* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
-const bodyParser = require('body-parser');
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
-app.use(bodyParser.json());
-
-// Cors for cross origin allowance
-const cors = require('cors');
-app.use(cors());
-
-const dotenv = require('dotenv');
-dotenv.config();
-
-// Personal API Key for geonames
-const geonamesAPIkey = process.env.GEONAMES_API_KEY;
-// Personal API Key for weatherbit
-const weatherbitAPIkey = process.env.WEATHERBIT_API_KEY;
-// Personal API Key for pixabay
-const pixabayAPIkey = process.env.PIXABAY_API_KEY;
-
-// Initialize the main project folder
-app.use(express.static('dist'));
-
-console.log(__dirname);
-
-app.get('/', function (req, res) {
-  res.sendFile('dist/index.html');
-});
-
-// Setup Server
-const port = process.env.PORT || 8081;
-const server = app.listen(port, listening);
-
-function listening() {
-  console.log(`server running on localhost: ${port}`);
-  console.log(`http://localhost:${port}/`);
-}
-
-app.get('/test', function (req, res) {
-  res.send(mockAPIResponse);
-});
-
-// POST Route geonames API Data
-app.post('/allData', allData);
-
-function allData(req, res) {
-  let aData = req.body.allData;
+  let aData = body.allData;
+  console.log('aData', aData);
   projectData['countryName'] = aData.geonamesData.countryName;
   projectData['lat'] = aData.geonamesData.lat;
   projectData['lng'] = aData.geonamesData.lng;
@@ -94,13 +38,10 @@ function allData(req, res) {
   projectData['languagesName'] = aData.countryInfoData.languagesName;
   projectData['flag'] = aData.countryInfoData.flag;
 
-  res.send(projectData);
   console.log('all projectData', projectData);
-}
 
-// POST Route for testing the server
-app.post('/test', async (req, res) => {
-  res.send(req.body);
-});
-
-module.exports = app;
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: 'The sky is blue.', status: 'success' }),
+  };
+};

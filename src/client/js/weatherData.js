@@ -4,11 +4,11 @@ function weatherData(lat, lon, countDownDays) {
   // Base URL for weatherbit API
   let weatherbitBaseURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${weatherbitAPIkey}`;
 
+  let weatherData = {};
   // fetch data from weatherbit API
   fetch(weatherbitBaseURL)
     .then((res) => res.json())
     .then(function (res) {
-
       // weatherbit API free account provide weather forecast for 16 days only
       let max_temp, min_temp, weather_description, datetime, weatherIcon;
       countDownDays <= 14 // Ternary Operator
@@ -25,34 +25,15 @@ function weatherData(lat, lon, countDownDays) {
           (weatherIcon = 0));
 
       // POST Weather Data to server
-      postWeatherData('/weatherData', {
-        max_temp: max_temp,
-        min_temp: min_temp,
-        weather_description: weather_description,
-        datetime: new Date(datetime).toLocaleDateString(),
-        weatherIcon: weatherIcon,
-      });
+
+      (weatherData['max_temp'] = max_temp),
+        (weatherData['min_temp'] = min_temp),
+        (weatherData['weather_description'] = weather_description),
+        (weatherData['datetime'] = new Date(datetime).toLocaleDateString()),
+        (weatherData['weatherIcon'] = weatherIcon),
+        console.log(weatherData);
     });
+  return weatherData;
 }
-
-/* Function to POST data */
-const postWeatherData = async (url = '', data = {}) => {
-  const res = await fetch(url, {
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  try {
-    const newData = await res.json();
-    return newData;
-  } catch (error) {
-    console.log('error', error);
-    // appropriately handle the error
-  }
-};
 
 export { weatherData };
